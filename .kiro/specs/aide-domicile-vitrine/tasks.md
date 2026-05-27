@@ -25,7 +25,7 @@ Build a fully static, single-page vitrine for a home-care service provider using
     - Remove the `@media (prefers-color-scheme: dark)` block (no dark mode)
     - _Requirements: 10.2, 10.6_
 
-- [ ] 2. Root layout — `app/layout.tsx`
+- [x] 2. Root layout — `app/layout.tsx`
   - [x] 2.1 Rewrite `app/layout.tsx` with correct metadata, viewport, and Footer wiring
     - Set `lang="fr"` on `<html>`
     - Export `metadata: Metadata` with `title` (service + zone), `description` (50–160 chars), and `openGraph` fields (`title`, `description`, `type`, `url`, `locale`)
@@ -35,8 +35,8 @@ Build a fully static, single-page vitrine for a home-care service provider using
     - Import `CONTENT` from `./_data/content`
     - _Requirements: 8.7, 9.1–9.5, 10.8_
 
-- [ ] 3. Leaf components
-  - [-] 3.1 Create `app/_components/ServiceCard.tsx`
+- [x] 3. Leaf components
+  - [x] 3.1 Create `app/_components/ServiceCard.tsx`
     - Accept `{ service: ServiceItem }` props
     - Render an `<article>` with icon/emoji area (`bg-mint` or `bg-sky` accent), `<h3>` title, and `<p>` description
     - Card styling: white background, border, rounded corners, subtle shadow
