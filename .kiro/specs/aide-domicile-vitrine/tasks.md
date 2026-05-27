@@ -113,109 +113,109 @@ Build a fully static, single-page vitrine for a home-care service provider using
 - [x] 6. Checkpoint — build verification
   - Run `pnpm build` and confirm zero TypeScript errors and zero Next.js build errors before proceeding to tests. Ask the user if any issues arise.
 
-- [ ] 7. Testing setup and property-based tests
-  - [~] 7.1 Install test dependencies and configure Vitest
+- [-] 7. Testing setup and property-based tests
+  - [x] 7.1 Install test dependencies and configure Vitest
     - Add to `devDependencies` in `package.json`: `vitest`, `@vitejs/plugin-react`, `jsdom`, `@testing-library/react`, `@testing-library/dom`, `vite-tsconfig-paths`, `fast-check`
     - Create `vitest.config.mts` at project root with `plugins: [tsconfigPaths(), react()]` and `test: { environment: 'jsdom' }`
     - Add `"test": "vitest --run"` script to `package.json`
     - Create `__tests__/` directory at project root
     - _Requirements: 11.6 (no new runtime deps; test deps are devDependencies)_
 
-  - [~] 7.2 Write unit tests for layout and metadata
+  - [x] 7.2 Write unit tests for layout and metadata
     - File: `__tests__/layout.test.tsx`
     - Test: root layout renders `<html lang="fr">`
     - Test: `metadata` export has non-empty `openGraph.title`, `openGraph.description`, `openGraph.type`, `openGraph.url`, `openGraph.locale`
     - _Requirements: 9.1–9.5_
 
-  - [~] 7.3 Write property test — Property 7: metadata description length
+  - [ ] 7.3 Write property test — Property 7: metadata description length
     - File: `__tests__/metadata.property.test.ts`
     - `// Feature: aide-domicile-vitrine, Property 7: Metadata description length is in [50, 160]`
     - Use `fc.string({ minLength: 50, maxLength: 160 })` to generate valid descriptions; assert `CONTENT`'s actual description satisfies the constraint
     - **Property 7: Metadata description length is in [50, 160]**
     - **Validates: Requirements 9.3**
 
-  - [~] 7.4 Write unit tests for HeroSection
+  - [x] 7.4 Write unit tests for HeroSection
     - File: `__tests__/HeroSection.test.tsx`
     - Test: renders `<h1>` with exact text "Aide à domicile pour les gestes du quotidien"
     - Test: renders primary CTA `<a href="#contact">` with label "Demander un devis"
     - Test: renders secondary CTA `<a href="#contact">` with label "Être rappelé"
     - _Requirements: 1.1, 1.4, 1.5_
 
-  - [~] 7.5 Write property test — Property 1: tel links are non-empty
+  - [-] 7.5 Write property test — Property 1: tel links are non-empty
     - File: `__tests__/tel-links.property.test.tsx`
     - `// Feature: aide-domicile-vitrine, Property 1: Tel links are non-empty`
     - Generate arbitrary non-empty phone strings with `fc.string({ minLength: 1 })`; render HeroSection, ContactSection, Footer; assert every `[href^="tel:"]` equals `"tel:" + phone` and is non-empty
     - **Property 1: Tel links are non-empty**
     - **Validates: Requirements 1.3, 7.2, 8.3**
 
-  - [~] 7.6 Write property test — Property 2: mailto links are non-empty
+  - [-] 7.6 Write property test — Property 2: mailto links are non-empty
     - File: `__tests__/mailto-links.property.test.tsx`
     - `// Feature: aide-domicile-vitrine, Property 2: Mailto links are non-empty`
     - Generate arbitrary non-empty email strings; render ContactSection and Footer; assert every `[href^="mailto:"]` equals `"mailto:" + email` and is non-empty
     - **Property 2: Mailto links are non-empty**
     - **Validates: Requirements 7.3, 8.4**
 
-  - [~] 7.7 Write unit tests for ServicesSection
+  - [x] 7.7 Write unit tests for ServicesSection
     - File: `__tests__/ServicesSection.test.tsx`
     - Test: renders all 4 required service titles ("Aide aux courses", "Aide ménagère", "Aide aux repas", "Actes de la vie quotidienne")
     - _Requirements: 2.2–2.5_
 
-  - [~] 7.8 Write property test — Property 3: services array has exactly 4 items
+  - [-] 7.8 Write property test — Property 3: services array has exactly 4 items
     - File: `__tests__/services.property.test.tsx`
     - `// Feature: aide-domicile-vitrine, Property 3: Services array has exactly 4 items`
     - Generate arbitrary arrays of exactly 4 `ServiceItem` objects; render ServicesSection; assert exactly 4 `<article>` elements are present
     - **Property 3: Services array has exactly 4 items**
     - **Validates: Requirements 2.1**
 
-  - [~] 7.9 Write unit tests for AudienceSection
+  - [x] 7.9 Write unit tests for AudienceSection
     - File: `__tests__/AudienceSection.test.tsx`
     - Test: renders all 4 audience profiles and the fallback invitation paragraph
     - _Requirements: 3.1–3.7_
 
-  - [~] 7.10 Write unit tests for ZoneSection
+  - [-] 7.10 Write unit tests for ZoneSection
     - File: `__tests__/ZoneSection.test.tsx`
     - Test: renders the surrounding areas note
     - Test: renders generic placeholder text when `cities` is an empty array
     - _Requirements: 4.3, 4.4_
 
-  - [~] 7.11 Write unit tests for PresentationSection
+  - [-] 7.11 Write unit tests for PresentationSection
     - File: `__tests__/PresentationSection.test.tsx`
     - Test: renders provider name, experience text, and all 3 values
     - _Requirements: 5.3–5.5_
 
-  - [~] 7.12 Write property test — Property 5: all image alt attributes are non-empty
+  - [-] 7.12 Write property test — Property 5: all image alt attributes are non-empty
     - File: `__tests__/image-alt.property.test.tsx`
     - `// Feature: aide-domicile-vitrine, Property 5: All image alt attributes are non-empty`
     - Generate arbitrary `ProviderProfile` objects (with and without `photoSrc`); render PresentationSection; assert every `<img>` has a non-empty `alt` attribute
     - **Property 5: All image alt attributes are non-empty**
     - **Validates: Requirements 5.2, 5.6, 10.5**
 
-  - [~] 7.13 Write unit tests for ContactSection
+  - [-] 7.13 Write unit tests for ContactSection
     - File: `__tests__/ContactSection.test.tsx`
     - Test: renders `<section id="contact">`
     - Test: renders availability text
     - _Requirements: 7.1, 7.4_
 
-  - [~] 7.14 Write property test — Property 6: ContactSection renders no form element
+  - [-] 7.14 Write property test — Property 6: ContactSection renders no form element
     - File: `__tests__/contact-no-form.property.test.tsx`
     - `// Feature: aide-domicile-vitrine, Property 6: ContactSection renders no form element`
     - Generate arbitrary ContactSection props; render ContactSection; assert zero `<form>` elements are present
     - **Property 6: ContactSection renders no form element**
     - **Validates: Requirements 7.6**
 
-  - [~] 7.15 Write property test — Property 4: trust points count is between 3 and 5
+  - [-] 7.15 Write property test — Property 4: trust points count is between 3 and 5
     - File: `__tests__/trust-points.property.test.tsx`
     - `// Feature: aide-domicile-vitrine, Property 4: Trust points count is between 3 and 5`
     - Generate arbitrary `TrustPoint` arrays with length in [3, 5] using `fc.array(trustPointArb, { minLength: 3, maxLength: 5 })`; render TrustSection; assert rendered item count equals array length
     - **Property 4: Trust points count is between 3 and 5**
     - **Validates: Requirements 6.1**
 
-  - [~] 7.16 Write unit tests for Footer
+  - [-] 7.16 Write unit tests for Footer
     - File: `__tests__/Footer.test.tsx`
     - Test: renders legal link
     - _Requirements: 8.5_
 
-  - [~] 7.17 Write property test — Property 8: all anchor CTAs have non-empty href values
+  - [-] 7.17 Write property test — Property 8: all anchor CTAs have non-empty href values
     - File: `__tests__/anchor-hrefs.property.test.tsx`
     - `// Feature: aide-domicile-vitrine, Property 8: All anchor CTAs have non-empty href values`
     - Generate arbitrary content data; render HeroSection, ContactSection, Footer together; assert every `<a>` element has a non-empty `href` attribute
