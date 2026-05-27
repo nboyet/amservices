@@ -100,8 +100,8 @@ Build a fully static, single-page vitrine for a home-care service provider using
     - Dark background with ≥ 4.5:1 contrast ratio (WCAG AA)
     - _Requirements: 8.1–8.7_
 
-- [ ] 5. Page composition — `app/page.tsx`
-  - [~] 5.1 Rewrite `app/page.tsx` to compose all sections
+- [x] 5. Page composition — `app/page.tsx`
+  - [x] 5.1 Rewrite `app/page.tsx` to compose all sections
     - Import `CONTENT` from `./_data/content`
     - Import all section components from `./_components/`
     - Render sections in order: `<HeroSection>`, `<ServicesSection>`, `<AudienceSection>`, `<ZoneSection>`, `<PresentationSection>`, `<TrustSection>`, `<ContactSection>`
@@ -110,7 +110,7 @@ Build a fully static, single-page vitrine for a home-care service provider using
     - No `'use client'` directive
     - _Requirements: 1.1–1.7, 9.6, 10.1, 10.4, 11.1–11.6_
 
-- [~] 6. Checkpoint — build verification
+- [x] 6. Checkpoint — build verification
   - Run `pnpm build` and confirm zero TypeScript errors and zero Next.js build errors before proceeding to tests. Ask the user if any issues arise.
 
 - [ ] 7. Testing setup and property-based tests
