@@ -1,9 +1,9 @@
 import type { SiteContent } from "../_types";
 
 export const CONTENT: SiteContent = {
-  phone: "06 00 00 00 00", // TODO: personalise
-  email: "contact@exemple.fr", // TODO: personalise
-  zone: "Ville et communes voisines", // TODO: personalise
+  phone: "07 82 68 79 54",
+  email: "amandine.mace2@gmail.com",
+  zone: "Laventie et communes voisines (20km)",
 
   services: [
     {
@@ -66,19 +66,19 @@ export const CONTENT: SiteContent = {
   audienceFallback:
     "Vous ne vous reconnaissez pas dans ces profils ? Contactez-nous, nous trouverons ensemble la solution adaptée à votre situation.", // TODO: personalise
 
-  zoneCities: ["Ville", "Commune A", "Commune B"], // TODO: personalise
+  zoneCities: ["Laventie", "20km"], // TODO: personalise
 
   zoneSurroundingNote:
     "Nous intervenons également dans les communes voisines. N'hésitez pas à nous contacter pour vérifier votre secteur.", // TODO: personalise
 
   provider: {
-    name: "Prénom Nom", // TODO: personalise
+    name: "Amandine Macé", // TODO: personalise
     role: "aide à domicile", // TODO: personalise
     photoSrc: null, // TODO: personalise — set to a path like "/photo-prestataire.jpg" once available
     photoWidth: 400,
     photoHeight: 400,
     experienceText:
-      "Forte d'une expérience auprès de personnes âgées et en situation de handicap, j'interviens à domicile avec bienveillance et professionnalisme.", // TODO: personalise
+      "Forte d'une expérience auprès de personnes âgées et en situation de handicap grâce à mon parcours d'aide soignante, j'interviens à domicile avec bienveillance et professionnalisme.",
     values: [
       "Bienveillance",
       "Discrétion",
@@ -123,10 +123,10 @@ export const CONTENT: SiteContent = {
     "Appelez-nous ou envoyez-nous un e-mail pour échanger sur vos besoins. Nous vous répondons dans les plus brefs délais.", // TODO: personalise
 
   footer: {
-    name: "Prénom Nom — Aide à domicile", // TODO: personalise
-    zones: ["Ville", "Commune A", "Commune B"], // TODO: personalise — max 10 items
-    phone: "06 00 00 00 00", // TODO: personalise
-    email: "contact@exemple.fr", // TODO: personalise
+    name: "Amandine Macé — Aide à domicile", // TODO: personalise
+    zones: ["Laventie", "Et alentour dans un rayon de 20km"], // TODO: personalise — max 10 items
+    phone: "07 82 68 79 54",
+    email: "amandine.mace2@gmail.com",
     legalUrl: "/mentions-legales",
   },
 };

@@ -10,7 +10,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Aide à domicile — Ville et communes voisines",
+  title: "AM Services - Aide à domicile — Laventie et communes voisines",
   description:
     "Aide à domicile pour les personnes âgées et en perte d'autonomie : courses, ménage, repas et actes du quotidien à Ville et communes voisines.",
   openGraph: {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description:
       "Aide à domicile pour les personnes âgées et en perte d'autonomie : courses, ménage, repas et actes du quotidien à Ville et communes voisines.",
     type: "website",
-    url: "https://exemple.fr",
+    url: "https://exemple.fr", // TODO: Change
     locale: "fr_FR",
   },
 };
