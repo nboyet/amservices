@@ -66,7 +66,7 @@ export const CONTENT: SiteContent = {
   audienceFallback:
     "Vous ne vous reconnaissez pas dans ces profils ? Contactez-nous, nous trouverons ensemble la solution adaptée à votre situation.", // TODO: personalise
 
-  zoneCities: ["Laventie", "20km"], // TODO: personalise
+  zoneCities: ["Laventie", "Fleurbaix", "Sailly-sur-la-Lys", "La Gorgue"], // TODO: personalise
 
   zoneSurroundingNote:
     "Nous intervenons également dans les communes voisines. N'hésitez pas à nous contacter pour vérifier votre secteur.", // TODO: personalise
@@ -123,8 +123,8 @@ export const CONTENT: SiteContent = {
     "Appelez-nous ou envoyez-nous un e-mail pour échanger sur vos besoins. Nous vous répondons dans les plus brefs délais.", // TODO: personalise
 
   footer: {
-    name: "Amandine Macé — Aide à domicile", // TODO: personalise
-    zones: ["Laventie", "Et alentour dans un rayon de 20km"], // TODO: personalise — max 10 items
+    name: "AM Services — Aide à domicile", // TODO: personalise
+    zones: ["Laventie", "Fleurbaix", "Sailly-sur-la-Lys", "La Gorgue"], // TODO: personalise — max 10 items
     phone: "07 82 68 79 54",
     email: "amandine.mace2@gmail.com",
     legalUrl: "/mentions-legales",
