@@ -43,36 +43,36 @@ Build a fully static, single-page vitrine for a home-care service provider using
     - No `'use client'` directive
     - _Requirements: 2.1–2.5, 11.1–11.2_
 
-- [ ] 4. Section components
-  - [~] 4.1 Create `app/_components/HeroSection.tsx`
+- [x] 4. Section components
+  - [x] 4.1 Create `app/_components/HeroSection.tsx`
     - Accept `{ phone: string; zone: string }` props
     - Render a `<header>` element containing: `<h1>` with exact text "Aide à domicile pour les gestes du quotidien", `<p>` subtitle mentioning service type and zone, `<a href="tel:{phone}">` phone link (min 44×44 px touch target via `min-h-[44px] min-w-[44px]`), `<a href="#contact">` primary CTA "Demander un devis" (styled as button), `<a href="#contact">` secondary CTA "Être rappelé" (styled as outlined button)
     - Use `bg-mint` or a mint/sky gradient as structural accent on white/very-light background
     - Mobile-first layout; no horizontal overflow at ≤768 px
     - _Requirements: 1.1–1.7_
 
-  - [~] 4.2 Create `app/_components/ServicesSection.tsx`
+  - [x] 4.2 Create `app/_components/ServicesSection.tsx`
     - Accept `{ services: ServiceItem[] }` props
     - Render a `<section>` with `<h2>` "Nos prestations"
     - Responsive grid: `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6`
     - Map `services` to `<ServiceCard>` components
     - _Requirements: 2.1–2.8, 11.1_
 
-  - [~] 4.3 Create `app/_components/AudienceSection.tsx`
+  - [x] 4.3 Create `app/_components/AudienceSection.tsx`
     - Accept `{ profiles: AudienceProfile[]; fallbackInvitation: string }` props
     - Render a `<section>` with `<h2>` "Pour qui ?"
     - Render 4 profile cards, each with `<h3>` and description; no stigmatising language
     - Render fallback invitation paragraph at the bottom
     - _Requirements: 3.1–3.7_
 
-  - [~] 4.4 Create `app/_components/ZoneSection.tsx`
+  - [x] 4.4 Create `app/_components/ZoneSection.tsx`
     - Accept `{ cities: string[]; surroundingNote: string }` props
     - Render a `<section>` with `<h2>` "Zone d'intervention"
     - Render `<ul>` with one `<li>` per city; if `cities` is empty, render the generic placeholder text "[Ville], [communes voisines] et alentours"
     - Render `<p>` for the surrounding areas note
     - _Requirements: 4.1–4.4_
 
-  - [~] 4.5 Create `app/_components/PresentationSection.tsx`
+  - [x] 4.5 Create `app/_components/PresentationSection.tsx`
     - Accept `{ provider: ProviderProfile }` props
     - Render a `<section>` with `<h2>` "Votre prestataire"
     - When `provider.photoSrc` is non-null: render `<Image>` from `next/image` with `width`, `height`, `alt` set to `"{name}, {role}"`, and `preload={true}` (replaces the deprecated `priority` prop — see Next.js 16 Image docs)
@@ -80,13 +80,13 @@ Build a fully static, single-page vitrine for a home-care service provider using
     - Render `<h3>` provider name, `<p>` experience text, and a list of the 3 values
     - _Requirements: 5.1–5.6, 10.5, 10.7_
 
-  - [~] 4.6 Create `app/_components/TrustSection.tsx`
+  - [x] 4.6 Create `app/_components/TrustSection.tsx`
     - Accept `{ points: TrustPoint[] }` props
     - Render a `<section>` with `<h2>` "Pourquoi nous faire confiance ?"
     - Render each trust point with a visual marker (SVG icon or styled bullet using `bg-mint`/`bg-sky`), `<h3>` short title, and `<p>` descriptive text
     - _Requirements: 6.1–6.7_
 
-  - [~] 4.7 Create `app/_components/ContactSection.tsx`
+  - [x] 4.7 Create `app/_components/ContactSection.tsx`
     - Accept `{ phone: string; email: string; availability: string; invitationText: string }` props
     - Render `<section id="contact">` with `<h2>` "Nous contacter"
     - Render `<a href="tel:{phone}">` displaying the real number, `<a href="mailto:{email}">` displaying the real address, `<p>` availability, `<p>` invitation text
@@ -94,7 +94,7 @@ Build a fully static, single-page vitrine for a home-care service provider using
     - Ensure touch targets ≥ 44×44 px
     - _Requirements: 7.1–7.7_
 
-  - [~] 4.8 Create `app/_components/Footer.tsx`
+  - [x] 4.8 Create `app/_components/Footer.tsx`
     - Accept `{ name: string; zones: string[]; phone: string; email: string; legalUrl: string }` props (i.e. `FooterData`)
     - Render a `<footer>` with provider name, zone list (max 10 entries), `<a href="tel:{phone}">`, `<a href="mailto:{email}">`, `<a href="{legalUrl}">` legal link
     - Dark background with ≥ 4.5:1 contrast ratio (WCAG AA)
