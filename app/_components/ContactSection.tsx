@@ -17,7 +17,7 @@ const ContactSection: FC<ContactSectionProps> = ({
     <section id="contact" className="bg-gray-50 px-4 py-12 sm:px-6 sm:py-16">
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-6 text-2xl font-bold text-gray-900 sm:text-3xl">
-          Nous contacter
+          Me contacter
         </h2>
 
         <p className="mb-6 text-base leading-relaxed text-gray-600">

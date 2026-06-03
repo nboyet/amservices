@@ -9,7 +9,7 @@ const TrustSection: FC<TrustSectionProps> = ({ points }) => {
   return (
     <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
       <h2 className="mb-8 text-2xl font-bold text-gray-900 sm:text-3xl">
-        Pourquoi nous faire confiance ?
+        Pourquoi me faire confiance ?
       </h2>
 
       <ul className="flex flex-col gap-6">

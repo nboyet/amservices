@@ -85,7 +85,7 @@ export const CONTENT: SiteContent = {
   zoneCities: ["Laventie", "Fleurbaix", "Sailly-sur-la-Lys", "La Gorgue"], // TODO: personalise
 
   zoneSurroundingNote:
-    "Nous intervenons également dans les communes voisines. N'hésitez pas à nous contacter pour vérifier votre secteur.", // TODO: personalise
+    "Les interventions peuvent également se dérouler dans les communes voisines. N'hésitez pas à me contacter pour vérifier votre secteur.", // TODO: personalise
 
   provider: {
     name: "Amandine Macé", // TODO: personalise
@@ -121,14 +121,14 @@ export const CONTENT: SiteContent = {
       id: "ecoute",
       title: "Écoute et autonomie",
       description:
-        "Nous adaptons notre aide à vos habitudes et veillons à préserver votre autonomie au quotidien.",
+        "J'adapte mon aide à vos habitudes et je veille à préserver votre autonomie au quotidien.",
       icon: "👂",
     },
     {
       id: "contact",
       title: "Simplicité et réactivité",
       description:
-        "Un contact direct, sans intermédiaire. Nous répondons rapidement à vos demandes et questions.",
+        "Un contact direct, sans intermédiaire. Je réponds rapidement à vos demandes et questions.",
       icon: "📞",
     },
   ],
@@ -136,7 +136,7 @@ export const CONTENT: SiteContent = {
   contactAvailability: "Disponible du lundi au vendredi, de 8 h à 18 h.", // TODO: personalise
 
   contactInvitation:
-    "Appelez-nous ou envoyez-nous un e-mail pour échanger sur vos besoins. Nous vous répondons dans les plus brefs délais.", // TODO: personalise
+    "Appelez-moi ou envoyez-moi un e-mail pour échanger sur vos besoins. Je vous répondrai dans les plus brefs délais.", // TODO: personalise
 
   tarifs: [
     {
