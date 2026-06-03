@@ -3,13 +3,9 @@ import type { AudienceProfile } from "../_types";
 
 interface AudienceSectionProps {
   profiles: AudienceProfile[];
-  fallbackInvitation: string;
 }
 
-const AudienceSection: FC<AudienceSectionProps> = ({
-  profiles,
-  fallbackInvitation,
-}) => {
+const AudienceSection: FC<AudienceSectionProps> = ({ profiles }) => {
   return (
     <section className="bg-gray-50 px-4 py-12 sm:px-6 sm:py-16">
       <div className="mx-auto max-w-6xl">
@@ -32,10 +28,6 @@ const AudienceSection: FC<AudienceSectionProps> = ({
             </div>
           ))}
         </div>
-
-        <p className="mt-8 rounded-2xl border border-sky/30 bg-sky/10 px-6 py-4 text-base text-gray-700">
-          {fallbackInvitation}
-        </p>
       </div>
     </section>
   );

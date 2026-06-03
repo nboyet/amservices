@@ -56,7 +56,6 @@ export interface SiteContent {
   zone: string; // short zone string for Hero subtitle
   services: ServiceItem[]; // exactly 4 items
   audienceProfiles: AudienceProfile[]; // exactly 4 items
-  audienceFallback: string;
   zoneCities: string[];
   zoneSurroundingNote: string;
   provider: ProviderProfile;

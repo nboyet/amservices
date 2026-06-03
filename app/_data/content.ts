@@ -7,18 +7,18 @@ export const CONTENT: SiteContent = {
 
   services: [
     {
+      id: "menage",
+      title: "Aide ménagère",
+      description:
+        "Entretien des sols, cuisine, salle de bain, chambre, vitres, mobilier.",
+      icon: "🏠",
+    },
+    {
       id: "courses",
       title: "Aide aux courses",
       description:
         "Accompagnement au magasin, courses selon vos besoins et rangement des achats.",
       icon: "🛒",
-    },
-    {
-      id: "menage",
-      title: "Aide ménagère",
-      description:
-        "Entretien du logement, vaisselle, lessive, repassage et rangement courant.",
-      icon: "🏠",
     },
     {
       id: "repas",
@@ -31,12 +31,25 @@ export const CONTENT: SiteContent = {
       id: "quotidien",
       title: "Actes de la vie quotidienne",
       description:
-        "Accompagnement dans les gestes essentiels (toilette, habillage, déplacements) selon le niveau d'autonomie.",
+        "Accompagnement dans les gestes essentiels (toilette partielle, habillage, déplacements) selon le niveau d'autonomie.",
       icon: "🤝",
+    },
+    {
+      id: "menagePro",
+      title: "Ménage (Professionnels)",
+      description:
+        "Ménage de fin de location, fin de chantier, entretien de bureaux, commerces et locaux professionnels.",
+      icon: "💼",
     },
   ],
 
   audienceProfiles: [
+    {
+      id: "all",
+      title: "Tous publics", // TODO: personalise
+      description:
+        "Un accompagnement personnalisé pour répondre aux besoins du quotidien.",
+    },
     {
       id: "personnes-agees",
       title: "Personnes âgées", // TODO: personalise
@@ -61,10 +74,13 @@ export const CONTENT: SiteContent = {
       description:
         "Un appui fiable pour les proches aidants qui souhaitent souffler tout en assurant un suivi de qualité.",
     },
+    {
+      id: "professionnels",
+      title: "Professionnels et entreprises",
+      description:
+        "Des prestations de nettoyage adaptées aux bureaux, commerces, locaux professionnels, fins de chantier et remises en état.",
+    },
   ],
-
-  audienceFallback:
-    "Vous ne vous reconnaissez pas dans ces profils ? Contactez-nous, nous trouverons ensemble la solution adaptée à votre situation.", // TODO: personalise
 
   zoneCities: ["Laventie", "Fleurbaix", "Sailly-sur-la-Lys", "La Gorgue"], // TODO: personalise
 

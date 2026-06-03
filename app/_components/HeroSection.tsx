@@ -8,10 +8,7 @@ interface HeroSectionProps {
 
 const HeroSection: FC<HeroSectionProps> = ({ phone, zone }) => {
   return (
-    <header className="bg-white">
-      {/* Mint accent bar */}
-      <div className="h-2 bg-mint" aria-hidden="true" />
-
+    <header className="bg-gradient-to-br from-mint/50 via-white to-sky/30">
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
         {/* Logo */}
         <div className="mb-8 flex justify-center">
@@ -25,15 +22,15 @@ const HeroSection: FC<HeroSectionProps> = ({ phone, zone }) => {
           />
         </div>
 
-        <h1 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
-          AMServices - Aide à domicile pour les gestes du quotidien
+        <h1 className="text-3xl text-center font-bold leading-tight text-gray-900 sm:text-2xl lg:text-4xl">
+          Amandine MACÉ - Aide à la personne
         </h1>
 
-        <p className="mt-4 text-lg text-gray-600 sm:text-xl">
+        <p className="mt-4 text-lg text-gray-600 sm:text-xl text-center ">
           Service d&apos;aide à domicile — {zone}
         </p>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+        <div className="md:justify-center mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
           {/* Phone link */}
           <a
             href={`tel:${phone.replace(/\s/g, "")}`}

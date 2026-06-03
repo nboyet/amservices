@@ -1,7 +1,6 @@
 import { CONTENT } from "./_data/content";
 import HeroSection from "./_components/HeroSection";
 import ServicesSection from "./_components/ServicesSection";
-import PrestationsSection from "./_components/PrestationsSection";
 import TarifsSection from "./_components/TarifsSection";
 import AudienceSection from "./_components/AudienceSection";
 import ZoneSection from "./_components/ZoneSection";
@@ -14,12 +13,8 @@ export default function Home() {
     <>
       <HeroSection phone={CONTENT.phone} zone={CONTENT.zone} />
       <ServicesSection services={CONTENT.services} />
-      <PrestationsSection prestations={CONTENT.prestations} />
       <TarifsSection tarifs={CONTENT.tarifs} />
-      <AudienceSection
-        profiles={CONTENT.audienceProfiles}
-        fallbackInvitation={CONTENT.audienceFallback}
-      />
+      <AudienceSection profiles={CONTENT.audienceProfiles} />
       <ZoneSection
         cities={CONTENT.zoneCities}
         surroundingNote={CONTENT.zoneSurroundingNote}
