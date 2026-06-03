@@ -28,6 +28,20 @@ export interface ProviderProfile {
   values: string[]; // exactly 3 items
 }
 
+export interface PrestationItem {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export interface TarifItem {
+  id: string;
+  title: string;
+  price: string;
+  description: string;
+  highlight: boolean;
+}
+
 export interface FooterData {
   name: string;
   zones: string[]; // max 10 items
@@ -47,6 +61,8 @@ export interface SiteContent {
   zoneSurroundingNote: string;
   provider: ProviderProfile;
   trustPoints: TrustPoint[]; // 3–5 items
+  prestations: PrestationItem[];
+  tarifs: TarifItem[];
   contactAvailability: string;
   contactInvitation: string;
   footer: FooterData;

@@ -122,6 +122,61 @@ export const CONTENT: SiteContent = {
   contactInvitation:
     "Appelez-nous ou envoyez-nous un e-mail pour échanger sur vos besoins. Nous vous répondons dans les plus brefs délais.", // TODO: personalise
 
+  prestations: [
+    {
+      id: "accompagnement-courses",
+      title: "Accompagnement aux courses",
+      description:
+        "Je vous accompagne pour faire vos courses en toute sérénité.",
+    },
+    {
+      id: "entretien-logement",
+      title: "Entretien du logement",
+      description:
+        "Ménage, vaisselle, lessive et rangement adaptés à vos besoins.",
+    },
+    {
+      id: "preparation-repas",
+      title: "Préparation des repas",
+      description: "Repas équilibrés préparés selon vos goûts et habitudes.",
+    },
+    {
+      id: "aide-toilette",
+      title: "Aide à la toilette",
+      description:
+        "Accompagnement respectueux pour les soins d'hygiène quotidiens.",
+    },
+    {
+      id: "aide-habillage",
+      title: "Aide à l'habillage",
+      description:
+        "Assistance pour vous habiller dans le respect de votre autonomie.",
+    },
+    {
+      id: "accompagnement-sorties",
+      title: "Accompagnement sorties",
+      description:
+        "Sorties médicales, administratives ou de loisirs en toute sécurité.",
+    },
+  ],
+
+  tarifs: [
+    {
+      id: "cesu",
+      title: "Tarif avec CESU",
+      price: "15€/heure",
+      description: "Paiement par Chèque Emploi Service Universel",
+      highlight: true,
+    },
+    {
+      id: "standard",
+      title: "Tarif standard",
+      price: "18€/heure",
+      description: "Tarif applicable sans CESU, déductible fiscalement à 50%",
+      highlight: false,
+    },
+  ],
+
   footer: {
     name: "AM Services — Aide à domicile", // TODO: personalise
     zones: ["Laventie", "Fleurbaix", "Sailly-sur-la-Lys", "La Gorgue"], // TODO: personalise — max 10 items

@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import Image from "next/image";
 
 interface HeroSectionProps {
   phone: string;
@@ -12,6 +13,18 @@ const HeroSection: FC<HeroSectionProps> = ({ phone, zone }) => {
       <div className="h-2 bg-mint" aria-hidden="true" />
 
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
+        {/* Logo */}
+        <div className="mb-8 flex justify-center">
+          <Image
+            src="/amServices.png"
+            alt="AM Services Logo"
+            width={300}
+            height={150}
+            priority
+            className="h-auto w-auto max-w-[200px] sm:max-w-[300px]"
+          />
+        </div>
+
         <h1 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
           AMServices - Aide à domicile pour les gestes du quotidien
         </h1>
