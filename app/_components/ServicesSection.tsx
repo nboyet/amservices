@@ -9,7 +9,7 @@ interface ServicesSectionProps {
 
 const ServicesSection: FC<ServicesSectionProps> = ({ services }) => {
   return (
-    <section className="bg-gradient-to-br from-mint/50 via-white to-sky/30 px-4 py-12 sm:px-6 sm:py-16">
+    <section className="px-4 py-12 sm:px-6 sm:py-16">
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-center sm:gap-8">
           <Image

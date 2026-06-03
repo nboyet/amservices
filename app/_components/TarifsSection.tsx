@@ -14,7 +14,7 @@ const TarifsSection: FC<TarifsSectionProps> = ({
   paymentMethods,
 }) => {
   return (
-    <section className="bg-gradient-to-br from-mint/50 via-white to-sky/30 py-12 sm:py-16 lg:py-20">
+    <section className="py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Header with logo */}
         <div className="mb-8 flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-center sm:gap-8">

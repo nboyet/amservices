@@ -9,7 +9,7 @@ import ContactSection from "./_components/ContactSection";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-gradient-to-br from-mint/50 via-white to-sky/30">
       <HeroSection phone={CONTENT.phone} zone={CONTENT.zone} />
       <ServicesSection services={CONTENT.services} />
       <TarifsSection
@@ -26,6 +26,6 @@ export default function Home() {
         availability={CONTENT.contactAvailability}
         invitationText={CONTENT.contactInvitation}
       />
-    </>
+    </div>
   );
 }
