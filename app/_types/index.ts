@@ -26,6 +26,7 @@ export interface ProviderProfile {
   photoHeight: number;
   experienceText: string;
   values: string[]; // exactly 3 items
+  likes: string[]; // ce que j'aime
 }
 
 export interface TarifItem {
@@ -38,7 +39,6 @@ export interface TarifItem {
 
 export interface FooterData {
   name: string;
-  zones: string[]; // max 10 items
   phone: string;
   email: string;
   legalUrl: string;
@@ -55,7 +55,6 @@ export interface SiteContent {
   zone: string; // short zone string for Hero subtitle
   services: ServiceItem[]; // exactly 4 items
   audienceProfiles: AudienceProfile[]; // exactly 4 items
-  zoneCities: string[];
   zoneSurroundingNote: string;
   provider: ProviderProfile;
   trustPoints: TrustPoint[]; // 3–5 items

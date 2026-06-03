@@ -3,7 +3,7 @@ import type { SiteContent } from "../_types";
 export const CONTENT: SiteContent = {
   phone: "07 82 68 79 54",
   email: "amandine.mace2@gmail.com",
-  zone: "Laventie et communes voisines (20km)",
+  zone: "Laventie et communes voisines",
 
   services: [
     {
@@ -82,30 +82,38 @@ export const CONTENT: SiteContent = {
     },
   ],
 
-  zoneCities: ["Laventie", "Fleurbaix", "Sailly-sur-la-Lys", "La Gorgue"], // TODO: personalise
-
   zoneSurroundingNote:
     "Les interventions peuvent également se dérouler dans les communes voisines. N'hésitez pas à me contacter pour vérifier votre secteur.", // TODO: personalise
 
   provider: {
     name: "Amandine Macé", // TODO: personalise
     role: "aide à domicile", // TODO: personalise
-    photoSrc: null, // TODO: personalise — set to a path like "/photo-prestataire.jpg" once available
+    photoSrc: "/amandine.jpg", // TODO: personalise — set to a path like "/photo-prestataire.jpg" once available
     photoWidth: 400,
     photoHeight: 400,
     experienceText:
-      "Forte d'une expérience auprès de personnes âgées et en situation de handicap grâce à mon parcours d'aide soignante, j'interviens à domicile avec bienveillance et professionnalisme.",
+      "Forte de 7 années d'expérience hospitalière, j'ai accompagné chaque jour des personnes âgées et des nouveau-nés, développant une expertise fondée sur l'écoute, la confiance et l'attention portée à chacun.",
     values: [
-      "Bienveillance",
-      "Discrétion",
-      "Adaptation au rythme de la personne accompagnée",
+      "Dynamique",
+      "Bienveillante",
+      "Discrète",
+      "Efficace",
+      "Respectueuse",
+      "Soigneuse",
+    ],
+    likes: [
+      "Le social",
+      "La propreté (un tantinet maniaque)",
+      "Le rangement",
+      "Apporter mon aide",
+      "Le bien-être",
     ],
   },
 
   trustPoints: [
     {
       id: "bienveillance",
-      title: "Bienveillance et respect",
+      title: "Bienveillance et discrétion",
       description:
         "Chaque intervention est réalisée dans le respect de la personne, de son espace et de ses habitudes.",
       icon: "💚",
@@ -125,8 +133,15 @@ export const CONTENT: SiteContent = {
       icon: "👂",
     },
     {
+      id: "respect",
+      title: "Respectueuse et soigneuse",
+      description:
+        "Intervention discrète et professionnelle, dans le respect de votre intimité et de votre domicile.",
+      icon: "🏠",
+    },
+    {
       id: "contact",
-      title: "Simplicité et réactivité",
+      title: "Dynamisme et réactivité",
       description:
         "Un contact direct, sans intermédiaire. Je réponds rapidement à vos demandes et questions.",
       icon: "📞",
@@ -202,8 +217,7 @@ export const CONTENT: SiteContent = {
   ],
 
   footer: {
-    name: "AM Services — Aide à domicile", // TODO: personalise
-    zones: ["Laventie", "Fleurbaix", "Sailly-sur-la-Lys", "La Gorgue"], // TODO: personalise — max 10 items
+    name: "AM Services — Aide à domicile", // TODO: personalise // TODO: personalise — max 10 items
     phone: "07 82 68 79 54",
     email: "amandine.mace2@gmail.com",
     legalUrl: "/mentions-legales",

@@ -27,7 +27,7 @@ const HeroSection: FC<HeroSectionProps> = ({ phone, zone }) => {
         </h1>
 
         <p className="mt-4 text-lg text-gray-600 sm:text-xl text-center ">
-          Service d&apos;aide à domicile — {zone}
+          {zone}
         </p>
 
         <div className="md:justify-center mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">

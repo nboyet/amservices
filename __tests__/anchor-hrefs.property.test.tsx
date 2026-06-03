@@ -51,7 +51,6 @@ describe("Property 8: All anchor CTAs have non-empty href values", () => {
         ) => {
           const footerData: FooterData = {
             name,
-            zones,
             phone,
             email,
             legalUrl,
