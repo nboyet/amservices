@@ -13,7 +13,10 @@ export default function Home() {
     <>
       <HeroSection phone={CONTENT.phone} zone={CONTENT.zone} />
       <ServicesSection services={CONTENT.services} />
-      <TarifsSection tarifs={CONTENT.tarifs} />
+      <TarifsSection
+        tarifs={CONTENT.tarifs}
+        paymentMethods={CONTENT.paymentMethods}
+      />
       <AudienceSection profiles={CONTENT.audienceProfiles} />
       <ZoneSection
         cities={CONTENT.zoneCities}

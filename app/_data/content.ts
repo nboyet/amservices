@@ -138,59 +138,62 @@ export const CONTENT: SiteContent = {
   contactInvitation:
     "Appelez-nous ou envoyez-nous un e-mail pour échanger sur vos besoins. Nous vous répondons dans les plus brefs délais.", // TODO: personalise
 
-  prestations: [
+  tarifs: [
     {
-      id: "accompagnement-courses",
-      title: "Accompagnement aux courses",
-      description:
-        "Je vous accompagne pour faire vos courses en toute sérénité.",
+      id: "aide-menagere",
+      title: "Aide ménagère",
+      price: "20€/h ",
+      description: "Entretien du logement",
+      taxCredit: true,
     },
     {
-      id: "entretien-logement",
-      title: "Entretien du logement",
-      description:
-        "Ménage, vaisselle, lessive et rangement adaptés à vos besoins.",
+      id: "menage-pro",
+      title: "Ménage professionnel",
+      price: "25€/h",
+      description: "Nettoyage approfondi et entretien professionnel",
+      taxCredit: false,
     },
     {
-      id: "preparation-repas",
-      title: "Préparation des repas",
-      description: "Repas équilibrés préparés selon vos goûts et habitudes.",
+      id: "actes-quotidiens",
+      title: "Aide actes quotidiens",
+      price: "25€/h",
+      description: "Toilette partielle, habillage, déplacements",
+      taxCredit: false,
     },
     {
-      id: "aide-toilette",
-      title: "Aide à la toilette",
-      description:
-        "Accompagnement respectueux pour les soins d'hygiène quotidiens.",
+      id: "aide-courses",
+      title: "Aide aux courses",
+      price: "18€/h",
+      description: "Accompagnement et réalisation des courses",
+      taxCredit: false,
     },
     {
-      id: "aide-habillage",
-      title: "Aide à l'habillage",
-      description:
-        "Assistance pour vous habiller dans le respect de votre autonomie.",
+      id: "aide-repas",
+      title: "Aide aux repas",
+      price: "18€/h",
+      description: "Préparation et aide à la prise des repas",
+      taxCredit: false,
     },
     {
-      id: "accompagnement-sorties",
-      title: "Accompagnement sorties",
-      description:
-        "Sorties médicales, administratives ou de loisirs en toute sécurité.",
+      id: "forfait-2h",
+      title: "Forfait hebdomadaire 2h",
+      price: "38€",
+      description: "A valoir sur l'aide ménagère",
+      taxCredit: true,
+    },
+    {
+      id: "forfait-4h",
+      title: "Forfait hebdomadaire 4h",
+      price: "75€",
+      description: "A valoir sur l'aide ménagère",
+      taxCredit: true,
     },
   ],
 
-  tarifs: [
-    {
-      id: "cesu",
-      title: "Tarif avec CESU",
-      price: "15€/heure",
-      description: "Paiement par Chèque Emploi Service Universel",
-      highlight: true,
-    },
-    {
-      id: "standard",
-      title: "Tarif standard",
-      price: "18€/heure",
-      description: "Tarif applicable sans CESU, déductible fiscalement à 50%",
-      highlight: false,
-    },
+  paymentMethods: [
+    "CESU (Chèque Emploi Service Universel)",
+    "Virement bancaire",
+    "Espèces",
   ],
 
   footer: {

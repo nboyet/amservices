@@ -4,14 +4,15 @@ import type { TarifItem } from "../_types";
 
 interface TarifsSectionProps {
   tarifs: TarifItem[];
+  paymentMethods: string[];
 }
 
-const TarifsSection: FC<TarifsSectionProps> = ({ tarifs }) => {
+const TarifsSection: FC<TarifsSectionProps> = ({ tarifs, paymentMethods }) => {
   return (
     <section className="bg-gradient-to-br from-sky/30 via-white to-mint/30 py-12 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Header with logo */}
-        <div className="mb-12 flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-center sm:gap-8">
+        <div className="mb-8 flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-center sm:gap-8">
           <Image
             src="/si_logo.webp"
             alt="Logo"
@@ -24,39 +25,69 @@ const TarifsSection: FC<TarifsSectionProps> = ({ tarifs }) => {
           </h2>
         </div>
 
-        {/* 2-column grid */}
-        <div className="grid gap-6 sm:grid-cols-2">
+        {/* Tax credit highlight - PROMINENT */}
+        <div className="mb-10 rounded-2xl border-4 border-mint bg-gradient-to-r from-mint/40 to-sky/40 p-6 text-center shadow-lg sm:p-8">
+          <div className="mx-auto max-w-3xl">
+            <div className="mb-3 text-4xl" aria-hidden="true">
+              💰
+            </div>
+            <h3 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+              50% de crédit d&apos;impôt
+            </h3>
+            <p className="mt-3 text-lg font-semibold text-gray-800">
+              L&apos;<strong>Aide ménagère </strong>ouvre droit à une réduction
+              d&apos;impôt de 50%
+            </p>
+            <p className="mt-2 text-base text-gray-700">
+              Exemple : <strong className="text-xl">40€</strong> ne vous coûte
+              réellement que <strong className="text-xl">20€ </strong> après
+              crédit d&apos;impôt
+            </p>
+          </div>
+        </div>
+
+        {/* 3-column grid for tarifs */}
+        <div className="mb-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {tarifs.map((tarif) => (
             <article
               key={tarif.id}
-              className={`rounded-xl border-2 p-8 shadow-sm transition-all hover:shadow-lg ${
-                tarif.highlight
-                  ? "border-mint bg-mint/10 ring-2 ring-mint"
-                  : "border-sky bg-white"
-              }`}
+              className="rounded-xl border-2 border-sky bg-white p-6 shadow-sm transition-all hover:shadow-md"
             >
-              <h3 className="text-2xl font-bold text-gray-900">
-                {tarif.title}
-              </h3>
-              <div className="mt-4 text-4xl font-extrabold text-gray-900">
+              <h3 className="text-lg font-bold text-gray-900">{tarif.title}</h3>
+              <div className="mt-3 text-3xl font-extrabold text-mint-800">
                 {tarif.price}
               </div>
-              <p className="mt-4 text-gray-600">{tarif.description}</p>
-              {tarif.highlight && (
-                <div className="mt-4 inline-block rounded-full bg-mint px-4 py-1 text-sm font-semibold text-gray-900">
-                  Recommandé
+              <p className="mt-3 text-sm text-gray-600">{tarif.description}</p>
+              {tarif.taxCredit && (
+                <div className="mt-4 inline-flex items-center gap-1 rounded-full bg-mint/30 px-3 py-1 text-xs font-semibold text-gray-900">
+                  ✓ Crédit d&apos;impôt 50%
                 </div>
               )}
             </article>
           ))}
         </div>
 
-        {/* Tax deduction notice */}
-        <div className="mt-8 rounded-lg bg-sky/20 p-4 text-center">
-          <p className="text-sm text-gray-700">
-            💡 <strong>Crédit d&apos;impôt :</strong> Bénéficiez de 50% de
-            crédit d&apos;impôt sur vos dépenses d&apos;aide à domicile
-          </p>
+        {/* Payment methods */}
+        <div className="rounded-xl bg-white p-6 shadow-sm">
+          <h3 className="mb-4 text-xl font-bold text-gray-900">
+            Moyens de paiement acceptés
+          </h3>
+          <ul className="space-y-2">
+            {paymentMethods.map((method) => (
+              <li
+                key={method}
+                className="flex items-center gap-3 text-gray-700"
+              >
+                <span
+                  className="flex h-6 w-6 items-center justify-center rounded-full bg-mint text-sm"
+                  aria-hidden="true"
+                >
+                  ✓
+                </span>
+                <span className="font-medium">{method}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

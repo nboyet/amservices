@@ -28,18 +28,12 @@ export interface ProviderProfile {
   values: string[]; // exactly 3 items
 }
 
-export interface PrestationItem {
-  id: string;
-  title: string;
-  description: string;
-}
-
 export interface TarifItem {
   id: string;
   title: string;
   price: string;
   description: string;
-  highlight: boolean;
+  taxCredit: boolean;
 }
 
 export interface FooterData {
@@ -60,8 +54,8 @@ export interface SiteContent {
   zoneSurroundingNote: string;
   provider: ProviderProfile;
   trustPoints: TrustPoint[]; // 3–5 items
-  prestations: PrestationItem[];
   tarifs: TarifItem[];
+  paymentMethods: string[];
   contactAvailability: string;
   contactInvitation: string;
   footer: FooterData;
