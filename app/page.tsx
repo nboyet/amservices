@@ -10,22 +10,32 @@ import ContactSection from "./_components/ContactSection";
 export default function Home() {
   return (
     <div className="bg-gradient-to-br from-mint/50 via-white to-sky/30">
-      <HeroSection phone={CONTENT.phone} zone={CONTENT.zone} />
-      <ServicesSection services={CONTENT.services} />
-      <TarifsSection
-        tarifs={CONTENT.tarifs}
-        travelFees={CONTENT.travelFees}
-        paymentMethods={CONTENT.paymentMethods}
-      />
+      <section id="accueil">
+        <HeroSection phone={CONTENT.phone} zone={CONTENT.zone} />
+      </section>
+      <section id="services">
+        <ServicesSection services={CONTENT.services} />
+      </section>
+      <section id="tarifs">
+        <TarifsSection
+          tarifs={CONTENT.tarifs}
+          travelFees={CONTENT.travelFees}
+          paymentMethods={CONTENT.paymentMethods}
+        />
+      </section>
       <AudienceSection profiles={CONTENT.audienceProfiles} />
-      <PresentationSection provider={CONTENT.provider} />
-      <TrustSection points={CONTENT.trustPoints} />
-      <ContactSection
-        phone={CONTENT.phone}
-        email={CONTENT.email}
-        availability={CONTENT.contactAvailability}
-        invitationText={CONTENT.contactInvitation}
-      />
+      <section id="qui-suis-je">
+        <PresentationSection provider={CONTENT.provider} />
+        <TrustSection points={CONTENT.trustPoints} />
+      </section>
+      <section id="contact">
+        <ContactSection
+          phone={CONTENT.phone}
+          email={CONTENT.email}
+          availability={CONTENT.contactAvailability}
+          invitationText={CONTENT.contactInvitation}
+        />
+      </section>
     </div>
   );
 }

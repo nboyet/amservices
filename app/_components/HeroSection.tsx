@@ -8,7 +8,7 @@ interface HeroSectionProps {
 
 const HeroSection: FC<HeroSectionProps> = ({ phone, zone }) => {
   return (
-    <header>
+    <header className="pt-20">
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
         {/* Logo */}
         <div className="mb-8 flex justify-center">

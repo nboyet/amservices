@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import { CONTENT } from "./_data/content";
 import Footer from "./_components/Footer";
+import Navigation from "./_components/Navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,8 +35,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${geistSans.variable} antialiased`}>
+    <html
+      lang="fr"
+      className={`${geistSans.variable} antialiased scroll-smooth`}
+    >
       <body className="min-h-full flex flex-col bg-white text-gray-900">
+        <Navigation />
         <main className="flex-1">{children}</main>
         <Footer data={CONTENT.footer} />
       </body>
