@@ -44,6 +44,11 @@ export interface FooterData {
   legalUrl: string;
 }
 
+export interface TravelFees {
+  freeRadius: string; // e.g. "10km autour de Laventie"
+  feePerKm: string; // e.g. "0,25€"
+}
+
 export interface SiteContent {
   phone: string;
   email: string;
@@ -55,6 +60,7 @@ export interface SiteContent {
   provider: ProviderProfile;
   trustPoints: TrustPoint[]; // 3–5 items
   tarifs: TarifItem[];
+  travelFees: TravelFees;
   paymentMethods: string[];
   contactAvailability: string;
   contactInvitation: string;

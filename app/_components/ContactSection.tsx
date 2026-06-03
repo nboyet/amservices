@@ -14,7 +14,10 @@ const ContactSection: FC<ContactSectionProps> = ({
   invitationText,
 }) => {
   return (
-    <section id="contact" className="bg-gray-50 px-4 py-12 sm:px-6 sm:py-16">
+    <section
+      id="contact"
+      className="bg-gradient-to-br from-mint/50 via-white to-sky/30 px-4 py-12 sm:px-6 sm:py-16"
+    >
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-6 text-2xl font-bold text-gray-900 sm:text-3xl">
           Me contacter

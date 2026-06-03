@@ -1,15 +1,20 @@
 import type { FC } from "react";
 import Image from "next/image";
-import type { TarifItem } from "../_types";
+import type { TarifItem, TravelFees } from "../_types";
 
 interface TarifsSectionProps {
   tarifs: TarifItem[];
+  travelFees: TravelFees;
   paymentMethods: string[];
 }
 
-const TarifsSection: FC<TarifsSectionProps> = ({ tarifs, paymentMethods }) => {
+const TarifsSection: FC<TarifsSectionProps> = ({
+  tarifs,
+  travelFees,
+  paymentMethods,
+}) => {
   return (
-    <section className="bg-gradient-to-br from-sky/30 via-white to-mint/30 py-12 sm:py-16 lg:py-20">
+    <section className="bg-gradient-to-br from-mint/50 via-white to-sky/30 py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Header with logo */}
         <div className="mb-8 flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-center sm:gap-8">
@@ -65,6 +70,37 @@ const TarifsSection: FC<TarifsSectionProps> = ({ tarifs, paymentMethods }) => {
               )}
             </article>
           ))}
+        </div>
+
+        {/* Travel fees */}
+        <div className="mb-6 rounded-xl bg-white p-6 shadow-sm">
+          <h3 className="mb-4 text-xl font-bold text-gray-900">
+            Frais kilométriques
+          </h3>
+          <div className="space-y-2 text-gray-700">
+            <p className="flex items-center gap-3">
+              <span
+                className="flex h-6 w-6 items-center justify-center rounded-full bg-mint text-sm"
+                aria-hidden="true"
+              >
+                ✓
+              </span>
+              <span>
+                <strong>Gratuit</strong> jusqu&apos;à {travelFees.freeRadius}
+              </span>
+            </p>
+            <p className="flex items-center gap-3">
+              <span
+                className="flex h-6 w-6 items-center justify-center rounded-full bg-sky text-sm"
+                aria-hidden="true"
+              >
+                📍
+              </span>
+              <span>
+                Au-delà : <strong>{travelFees.feePerKm}/km</strong>
+              </span>
+            </p>
+          </div>
         </div>
 
         {/* Payment methods */}

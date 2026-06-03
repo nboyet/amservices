@@ -190,6 +190,11 @@ export const CONTENT: SiteContent = {
     },
   ],
 
+  travelFees: {
+    freeRadius: "10km autour de Laventie",
+    feePerKm: "0,25€",
+  },
+
   paymentMethods: [
     "CESU (Chèque Emploi Service Universel)",
     "Virement bancaire",
