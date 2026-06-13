@@ -9,39 +9,42 @@ export const metadata: Metadata = {
 
 const sections: { title: string; content: string[] }[] = [
   {
-    title: "1. Éditeur du site",
+    title: "Informations sur l'entreprise",
     content: [
-      "Raison sociale : AM Services — Aide à domicile",
-      "Responsable de la publication : Amandine Macé",
+      "Mention: entrepreneur individuel",
+      "Identité: Amandine Macé",
+      "SIRET : 10269273800010",
+      "SIREN : 102692738",
+      "SAP : 102692738",
+      "Adresse du domicile: *** rue ***, 62840 Laventie",
+      "Adresse de courrier électronique: amandine.mace2@gmail.com",
       "Téléphone : 07 82 68 79 54",
-      "E-mail : amandine.mace2@gmail.com",
-      "Zone d'intervention : Laventie et communes voisines (62)",
     ],
   },
   {
-    title: "2. Nature du site",
+    title: "Nature du site",
     content: [
       "Ce site est un site vitrine à vocation exclusivement informative, présentant les services d'aide à domicile et de ménage proposés par AM Services.",
       "Il ne permet pas la conclusion de contrats en ligne ni le paiement de prestations.",
     ],
   },
   {
-    title: "3. Hébergement",
+    title: "Hébergement du site web",
     content: [
       "Hébergeur : Vercel Inc.",
-      "Adresse : 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
+      "Adresse :  201 Mission St #300, San Francisco, CA 94105, États-Unis",
       "Site web : https://vercel.com",
     ],
   },
   {
-    title: "4. Propriété intellectuelle",
+    title: "Propriété intellectuelle",
     content: [
       "L'ensemble des contenus présents sur ce site (textes, visuels, logos, structure) sont la propriété exclusive d'AM Services et sont protégés par le droit de la propriété intellectuelle.",
       "Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable, est interdite et constitue une contrefaçon sanctionnée par le Code de la propriété intellectuelle.",
     ],
   },
   {
-    title: "5. Données personnelles",
+    title: "Données personnelles",
     content: [
       "Les données personnelles collectées via les moyens de contact du site (nom, téléphone, adresse e-mail) sont utilisées uniquement pour répondre aux demandes formulées.",
       "Elles ne font l'objet d'aucune cession ni transmission à des tiers.",
@@ -49,14 +52,14 @@ const sections: { title: string; content: string[] }[] = [
     ],
   },
   {
-    title: "6. Cookies",
+    title: "Cookies",
     content: [
       "Ce site n'utilise pas de cookies à des fins publicitaires ou de traçage.",
       "Des cookies techniques strictement nécessaires au bon fonctionnement du site peuvent être déposés.",
     ],
   },
   {
-    title: "7. Responsabilité",
+    title: "Responsabilité",
     content: [
       "AM Services s'efforce de maintenir les informations de ce site à jour et exactes. Toutefois, l'exactitude et l'exhaustivité des contenus ne peuvent être garanties.",
       "La responsabilité d'AM Services ne saurait être engagée en cas d'erreur ou d'omission dans les informations diffusées, ni pour tout préjudice résultant de l'utilisation du site.",
@@ -64,7 +67,7 @@ const sections: { title: string; content: string[] }[] = [
     ],
   },
   {
-    title: "8. Droit applicable",
+    title: "Droit applicable",
     content: [
       "Le présent site et les présentes mentions légales sont soumis au droit français.",
       "En cas de litige, les tribunaux compétents seront ceux du ressort du domicile de l'éditeur, sauf disposition légale contraire.",
@@ -86,8 +89,8 @@ export default function MentionsLegalesPage() {
           </h1>
           <p className="mt-4 max-w-xl text-base leading-7 text-gray-500">
             Conformément à la loi n° 2004‑575 du 21 juin 2004 pour la confiance
-            dans l&apos;économie numérique (LCEN), voici les informations légales
-            relatives à ce site.
+            dans l&apos;économie numérique (LCEN), voici les informations
+            légales relatives à ce site.
           </p>
           <div className="mt-8">
             <Link
@@ -101,13 +104,13 @@ export default function MentionsLegalesPage() {
 
         {/* Sections */}
         <div className="grid gap-5">
-          {sections.map((section) => (
+          {sections.map((section, index) => (
             <section
               key={section.title}
               className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm sm:p-8"
             >
               <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
-                {section.title}
+                {index + 1}. {section.title}
               </h2>
               <div className="mt-4 space-y-3 text-sm leading-7 text-gray-600 sm:text-base">
                 {section.content.map((paragraph, i) => (
