@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { href: "#services", label: "Services" },
@@ -12,6 +13,9 @@ const navItems = [
 ];
 
 export default function Navigation() {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -20,6 +24,7 @@ export default function Navigation() {
       setIsScrolled(window.scrollY > 20);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -28,12 +33,18 @@ export default function Navigation() {
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
+    // On sub-pages, let the <Link href="/#section"> do a full navigation
+    if (!isHomePage) {
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
     e.preventDefault();
     const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);
 
     if (element) {
-      const offset = 80; // Account for fixed header height
+      const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
 
@@ -41,24 +52,31 @@ export default function Navigation() {
         top: offsetPosition,
         behavior: "smooth",
       });
-
-      setIsMobileMenuOpen(false);
     }
+
+    setIsMobileMenuOpen(false);
   };
+
+  // On the homepage, keep hash-only hrefs for smooth scroll.
+  // On other pages, prepend "/" so Next.js navigates back to homepage + hash.
+  const getNavHref = (hash: string) => (isHomePage ? hash : `/${hash}`);
+  const logoHref = isHomePage ? "#accueil" : "/#accueil";
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white/95 shadow-lg backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center md:justify-center justify-between h-32">
+        <div className="flex h-32 items-center justify-between md:justify-center">
           {/* Logo */}
           <Link
-            href="#accueil"
-            onClick={(e) => scrollToSection(e, "#accueil")}
-            className="flex items-center group mr-4"
+            href={logoHref}
+            onClick={(e) =>
+              scrollToSection(e as React.MouseEvent<HTMLAnchorElement>, "#accueil")
+            }
+            className="group mr-4 flex items-center"
           >
             <Image
               src="/amServices.png"
@@ -71,13 +89,13 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          <div className="hidden items-center space-x-1 md:flex lg:space-x-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                href={getNavHref(item.href)}
                 onClick={(e) => scrollToSection(e, item.href)}
-                className={`px-3 lg:px-4 py-2 rounded-lg text-sm lg:text-base font-medium transition-all duration-300 hover:bg-gradient-to-r hover:from-mint/30 hover:to-sky/30 ${
+                className={`rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 hover:bg-gradient-to-r hover:from-mint/30 hover:to-sky/30 lg:px-4 lg:text-base ${
                   isScrolled
                     ? "text-gray-700 hover:text-gray-900"
                     : "text-gray-900"
@@ -88,7 +106,7 @@ export default function Navigation() {
             ))}
             <Link
               href="tel:0782687954"
-              className="ml-4 px-4 lg:px-6 py-2 lg:py-2.5 bg-gradient-to-r from-emerald-500 to-sky-500 text-white rounded-lg font-medium text-sm lg:text-base transition-all duration-300 hover:shadow-lg hover:scale-105 hover:from-emerald-600 hover:to-sky-600"
+              className="ml-4 rounded-lg bg-gradient-to-r from-emerald-500 to-sky-500 px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:scale-105 hover:from-emerald-600 hover:to-sky-600 hover:shadow-lg lg:px-6 lg:py-2.5 lg:text-base"
             >
               📞 Appelez-moi
             </Link>
@@ -97,14 +115,14 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg transition-colors hover:bg-gray-100"
+            className="rounded-lg p-2 transition-colors hover:bg-gray-100 md:hidden"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
           >
-            <div className="w-6 h-5 flex flex-col justify-between">
+            <div className="flex h-5 w-6 flex-col justify-between">
               <span
                 className={`block h-0.5 w-full bg-gray-900 transition-all duration-300 ${
-                  isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+                  isMobileMenuOpen ? "translate-y-2 rotate-45" : ""
                 }`}
               />
               <span
@@ -114,7 +132,7 @@ export default function Navigation() {
               />
               <span
                 className={`block h-0.5 w-full bg-gray-900 transition-all duration-300 ${
-                  isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                  isMobileMenuOpen ? "-translate-y-2 -rotate-45" : ""
                 }`}
               />
             </div>
@@ -123,24 +141,24 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white ${
+          className={`overflow-hidden bg-white transition-all duration-300 ease-in-out md:hidden ${
             isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="py-4 space-y-2 border-t border-gray-200">
+          <div className="space-y-2 border-t border-gray-200 py-4">
             {navItems.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                href={getNavHref(item.href)}
                 onClick={(e) => scrollToSection(e, item.href)}
-                className="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 transition-all duration-200 hover:bg-gradient-to-r hover:from-mint/30 hover:to-sky/30 hover:text-gray-900"
+                className="block rounded-lg px-4 py-3 text-base font-medium text-gray-700 transition-all duration-200 hover:bg-gradient-to-r hover:from-mint/30 hover:to-sky/30 hover:text-gray-900"
               >
                 {item.label}
               </Link>
             ))}
             <Link
               href="tel:0782687954"
-              className="block mx-4 mt-4 px-4 py-3 bg-gradient-to-r from-emerald-500 to-sky-500 text-white text-center rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:from-emerald-600 hover:to-sky-600"
+              className="mx-4 mt-4 block rounded-lg bg-gradient-to-r from-emerald-500 to-sky-500 px-4 py-3 text-center font-medium text-white transition-all duration-300 hover:from-emerald-600 hover:to-sky-600 hover:shadow-lg"
             >
               📞 Appelez-moi
             </Link>
