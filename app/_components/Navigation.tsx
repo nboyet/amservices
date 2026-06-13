@@ -53,7 +53,7 @@ export default function Navigation() {
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center md:justify-center justify-between h-20">
+        <div className="flex items-center md:justify-center justify-between h-32">
           {/* Logo */}
           <Link
             href="#accueil"
@@ -63,9 +63,9 @@ export default function Navigation() {
             <Image
               src="/amServices.png"
               alt="AM Services"
-              width={180}
-              height={180}
-              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+              width={120}
+              height={120}
+              className="h-32 w-auto transition-transform duration-300 group-hover:scale-105"
               priority
             />
           </Link>

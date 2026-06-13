@@ -10,20 +10,11 @@ const HeroSection: FC<HeroSectionProps> = ({ phone, zone }) => {
   return (
     <header className="pt-20">
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
-        {/* Logo */}
-        <div className="mb-8 flex justify-center">
-          <Image
-            src="/amServices.png"
-            alt="AM Services Logo"
-            width={300}
-            height={150}
-            priority
-            className="h-auto w-auto max-w-[200px] sm:max-w-[300px]"
-          />
-        </div>
-
-        <h1 className="text-3xl text-center font-bold leading-tight text-gray-900 sm:text-2xl lg:text-4xl">
-          Amandine MACÉ - Aide à la personne
+        <h1 className="text-2xl text-center font-bold leading-tight text-gray-900 lg:text-4xl">
+          Amandine MACÉ
+        </h1>
+        <h1 className="text-xl text-center font-bold leading-tight text-gray-900 sm:text-xl lg:text-3xl">
+          Aide à la personne
         </h1>
 
         <p className="mt-4 text-lg text-gray-600 sm:text-xl text-center ">
