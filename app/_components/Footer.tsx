@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import Link from "next/link";
 import type { FooterData } from "../_types";
 
 interface FooterProps {
@@ -6,19 +7,23 @@ interface FooterProps {
 }
 
 const Footer: FC<FooterProps> = ({ data }) => {
-  // Limit zones to 10 entries as per requirement 8.2
-
   return (
     <footer className="bg-gray-900 px-4 py-10 text-gray-200 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Provider name */}
-          <div>
+          {/* Provider name + legal link */}
+          <div className="flex flex-col gap-3">
             <p className="text-lg font-semibold text-white">{data.name}</p>
+            <Link
+              href={data.legalUrl}
+              className="w-fit text-sm text-gray-400 underline-offset-4 transition-colors duration-200 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              Mentions légales
+            </Link>
           </div>
 
           {/* Contact links */}
-          <div className="flex flex-row justify-between">
+          <div className="flex flex-row items-start justify-between lg:col-span-2 lg:justify-end lg:gap-12">
             <a
               href={`tel:${data.phone.replace(/\s/g, "")}`}
               className="inline-flex min-h-[44px] min-w-[44px] items-center gap-2 text-sm text-gray-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
