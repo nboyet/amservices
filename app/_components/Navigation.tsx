@@ -33,7 +33,6 @@ export default function Navigation() {
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
-    // On sub-pages, let the <Link href="/#section"> do a full navigation
     if (!isHomePage) {
       setIsMobileMenuOpen(false);
       return;
@@ -57,8 +56,6 @@ export default function Navigation() {
     setIsMobileMenuOpen(false);
   };
 
-  // On the homepage, keep hash-only hrefs for smooth scroll.
-  // On other pages, prepend "/" so Next.js navigates back to homepage + hash.
   const getNavHref = (hash: string) => (isHomePage ? hash : `/${hash}`);
   const logoHref = isHomePage ? "#accueil" : "/#accueil";
 
@@ -70,11 +67,13 @@ export default function Navigation() {
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-32 items-center justify-between md:justify-center">
-          {/* Logo */}
           <Link
             href={logoHref}
             onClick={(e) =>
-              scrollToSection(e as React.MouseEvent<HTMLAnchorElement>, "#accueil")
+              scrollToSection(
+                e as React.MouseEvent<HTMLAnchorElement>,
+                "#accueil",
+              )
             }
             className="group mr-4 flex items-center"
           >
@@ -88,7 +87,6 @@ export default function Navigation() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden items-center space-x-1 md:flex lg:space-x-2">
             {navItems.map((item) => (
               <Link
@@ -112,7 +110,6 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="rounded-lg p-2 transition-colors hover:bg-gray-100 md:hidden"
@@ -139,7 +136,6 @@ export default function Navigation() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         <div
           className={`overflow-hidden bg-white transition-all duration-300 ease-in-out md:hidden ${
             isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"

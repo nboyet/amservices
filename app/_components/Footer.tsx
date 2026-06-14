@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { FooterData } from "../_types";
 
 interface FooterProps {
@@ -13,6 +14,13 @@ const Footer: FC<FooterProps> = ({ data }) => {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {/* Provider name + legal link */}
           <div className="flex flex-col gap-3">
+            <Image
+              src="/si_logo.webp"
+              alt="Logo"
+              width={80}
+              height={80}
+              className="h-16 w-16 rounded-lg object-contain sm:h-20 sm:w-20"
+            />
             <p className="text-lg font-semibold text-white">{data.name}</p>
             <Link
               href={data.legalUrl}

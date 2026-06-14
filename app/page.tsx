@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { CONTENT } from "./_data/content";
 import HeroSection from "./_components/HeroSection";
 import ServicesSection from "./_components/ServicesSection";
@@ -9,59 +12,77 @@ import TrustSection from "./_components/TrustSection";
 import ContactSection from "./_components/ContactSection";
 
 export default function Home() {
+  const [activeVersion, setActiveVersion] = useState<"A" | "B">("A");
+
   return (
-    <div className="bg-gradient-to-br from-mint via-white to-sky">
+    <div className="bg-gradient-to-br from-mint/50 via-white to-sky/30">
+      <div className="sticky top-30 z-40 flex justify-center px-4 pt-6">
+        <div className="w-full max-w-3xl rounded-2xl border border-gray-200 bg-white/90 p-4 shadow-lg backdrop-blur md:p-5">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-600">
+                Comparaison des versions
+              </p>
+              <p className="mt-1 text-sm text-gray-500">
+                Seul le bloc Services / Tarifs change.
+              </p>
+            </div>
+            <div className="flex gap-2 rounded-full bg-gray-100 p-1.5">
+              <button
+                type="button"
+                onClick={() => setActiveVersion("A")}
+                className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 ${
+                  activeVersion === "A"
+                    ? "bg-gray-800 text-white shadow"
+                    : "text-gray-600 hover:text-gray-800"
+                }`}
+                aria-pressed={activeVersion === "A"}
+              >
+                Version A
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveVersion("B")}
+                className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 ${
+                  activeVersion === "B"
+                    ? "bg-gradient-to-r from-emerald-500 to-sky-500 text-white shadow"
+                    : "text-gray-600 hover:text-gray-800"
+                }`}
+                aria-pressed={activeVersion === "B"}
+              >
+                Version B
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <section id="accueil">
         <HeroSection phone={CONTENT.phone} zone={CONTENT.zone} />
       </section>
 
-      {/* ─────────────────────────────────────────────────────────────────────
-          VERSION A — Composants actuels (ServicesSection + TarifsSection)
-          ───────────────────────────────────────────────────────────────── */}
-      <div className="relative">
-        <div className="sticky top-20 z-40 flex justify-center">
-          <span className="rounded-full bg-gray-800/90 px-4 py-1.5 text-xs font-semibold tracking-widest text-white shadow backdrop-blur">
-            VERSION A — Actuelle
-          </span>
-        </div>
+      {activeVersion === "A" ? (
+        <>
+          <section id="services">
+            <ServicesSection services={CONTENT.services} />
+          </section>
+          <section id="tarifs">
+            <TarifsSection
+              tarifs={CONTENT.tarifs}
+              travelFees={CONTENT.travelFees}
+              paymentMethods={CONTENT.paymentMethods}
+            />
+          </section>
+        </>
+      ) : (
         <section id="services">
-          <ServicesSection services={CONTENT.services} />
-        </section>
-        <section id="tarifs">
-          <TarifsSection
-            tarifs={CONTENT.tarifs}
-            travelFees={CONTENT.travelFees}
-            paymentMethods={CONTENT.paymentMethods}
-          />
-        </section>
-      </div>
-
-      {/* Separator */}
-      <div className="relative my-4 flex items-center gap-4 px-8">
-        <div className="h-px flex-1 bg-gray-300" />
-        <span className="rounded-full border border-gray-300 bg-white px-4 py-1 text-xs font-medium text-gray-500">
-          — ou —
-        </span>
-        <div className="h-px flex-1 bg-gray-300" />
-      </div>
-
-      {/* ─────────────────────────────────────────────────────────────────────
-          VERSION B — Nouveau composant ServicesPricingSection
-          ───────────────────────────────────────────────────────────────── */}
-      <div className="relative">
-        <div className="sticky top-20 z-40 flex justify-center">
-          <span className="rounded-full bg-gradient-to-r from-emerald-500 to-sky-500 px-4 py-1.5 text-xs font-semibold tracking-widest text-white shadow">
-            VERSION B — Nouvelle
-          </span>
-        </div>
-        <section id="services-v2">
           <ServicesPricingSection
             tarifs={CONTENT.tarifs}
             travelFees={CONTENT.travelFees}
             paymentMethods={CONTENT.paymentMethods}
           />
         </section>
-      </div>
+      )}
 
       <AudienceSection profiles={CONTENT.audienceProfiles} />
       <section id="qui-suis-je">

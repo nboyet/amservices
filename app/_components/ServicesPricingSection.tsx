@@ -46,19 +46,6 @@ const PRICING_CARDS: PricingCard[] = [
     ],
   },
   {
-    id: "actes-quotidiens",
-    icon: "🤝",
-    title: "Actes du quotidien",
-    price: "20",
-    unit: "€ / heure",
-    features: [
-      "Toilette partielle",
-      "Habillage",
-      "Aide aux déplacements",
-      "Adapté au niveau d'autonomie",
-    ],
-  },
-  {
     id: "menage-pro",
     icon: "💼",
     title: "Ménage professionnel",
@@ -72,6 +59,20 @@ const PRICING_CARDS: PricingCard[] = [
       "Locaux professionnels",
     ],
   },
+  {
+    id: "actes-quotidiens",
+    icon: "🤝",
+    title: "Actes du quotidien",
+    price: "20",
+    unit: "€ / heure",
+    features: [
+      "Toilette partielle",
+      "Habillage",
+      "Aide aux déplacements",
+      "Adapté au niveau d'autonomie",
+    ],
+  },
+
   {
     id: "aide-courses",
     icon: "🛒",
@@ -200,7 +201,7 @@ function PricingCardComponent({ card }: { card: PricingCard }) {
                 .toPrecision(3)
                 .toString()
                 .replace(".", ",")}{" "}
-              €/h{" "}
+              € / heure{" "}
             </strong>{" "}
             après crédit d&apos;impôt
           </p>
