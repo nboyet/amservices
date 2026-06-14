@@ -10,7 +10,7 @@ import ContactSection from "./_components/ContactSection";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-br from-mint/50 via-white to-sky/30">
+    <div className="bg-gradient-to-br from-mint via-white to-sky">
       <section id="accueil">
         <HeroSection phone={CONTENT.phone} zone={CONTENT.zone} />
       </section>
