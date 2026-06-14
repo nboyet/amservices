@@ -8,7 +8,7 @@ interface ScrollRevealProps {
   /** Animation variant: 'up' (default) | 'left' | 'scale' | 'trust' */
   variant?: "up" | "left" | "scale" | "trust";
   delay?: number;
-  as?: keyof JSX.IntrinsicElements;
+  as?: unknown;
 }
 
 const variantClass: Record<string, string> = {
@@ -56,10 +56,7 @@ export default function ScrollReveal({
 
   return (
     // @ts-expect-error dynamic tag
-    <Tag
-      ref={ref}
-      className={`${animClass} ${delayClass} ${className}`.trim()}
-    >
+    <Tag ref={ref} className={`${animClass} ${delayClass} ${className}`.trim()}>
       {children}
     </Tag>
   );
