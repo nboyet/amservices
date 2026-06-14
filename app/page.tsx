@@ -4,8 +4,10 @@ import { useState } from "react";
 import { CONTENT } from "./_data/content";
 import HeroSection from "./_components/HeroSection";
 import HeroSectionC from "./_components/HeroSectionC";
+import HeroSectionD from "./_components/HeroSectionD";
 import ServicesSection from "./_components/ServicesSection";
 import ServicesSectionC from "./_components/ServicesSectionC";
+import ServicesSectionD from "./_components/ServicesSectionD";
 import TarifsSection from "./_components/TarifsSection";
 import ServicesPricingSection from "./_components/ServicesPricingSection";
 import AudienceSection from "./_components/AudienceSection";
@@ -14,7 +16,7 @@ import TrustSection from "./_components/TrustSection";
 import ContactSection from "./_components/ContactSection";
 
 export default function Home() {
-  const [activeVersion, setActiveVersion] = useState<"A" | "B" | "C">("A");
+  const [activeVersion, setActiveVersion] = useState<"A" | "B" | "C" | "D">("A");
 
   return (
     <div className="bg-gradient-to-br from-mint/50 via-white to-sky/30">
@@ -66,15 +68,31 @@ export default function Home() {
               >
                 Version C
               </button>
+              <button
+                type="button"
+                onClick={() => setActiveVersion("D")}
+                className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 ${
+                  activeVersion === "D"
+                    ? "bg-gradient-to-r from-blue-800 to-green-700 text-white shadow"
+                    : "text-gray-600 hover:text-gray-800"
+                }`}
+                aria-pressed={activeVersion === "D"}
+              >
+                Version D
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Hero — Version C has its own full-width image hero */}
+      {/* Hero */}
       {activeVersion === "C" ? (
         <section id="accueil">
           <HeroSectionC phone={CONTENT.phone} zone={CONTENT.zone} />
+        </section>
+      ) : activeVersion === "D" ? (
+        <section id="accueil">
+          <HeroSectionD phone={CONTENT.phone} zone={CONTENT.zone} />
         </section>
       ) : (
         <section id="accueil">
@@ -82,6 +100,7 @@ export default function Home() {
         </section>
       )}
 
+      {/* Services / tarifs */}
       {activeVersion === "A" ? (
         <>
           <section id="services">
@@ -103,9 +122,18 @@ export default function Home() {
             paymentMethods={CONTENT.paymentMethods}
           />
         </section>
-      ) : (
+      ) : activeVersion === "C" ? (
         <section id="services">
           <ServicesSectionC
+            services={CONTENT.services}
+            tarifs={CONTENT.tarifs}
+            travelFees={CONTENT.travelFees}
+            paymentMethods={CONTENT.paymentMethods}
+          />
+        </section>
+      ) : (
+        <section id="services">
+          <ServicesSectionD
             services={CONTENT.services}
             tarifs={CONTENT.tarifs}
             travelFees={CONTENT.travelFees}
