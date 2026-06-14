@@ -15,6 +15,7 @@ const navItems = [
 export default function Navigation() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const isVersionsPage = pathname === "/versions";
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -104,6 +105,19 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
+
+            {/* Versions A/B link — remove once a version is chosen */}
+            <Link
+              href="/versions"
+              className={`rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 lg:px-4 lg:text-base ${
+                isVersionsPage
+                  ? "bg-gradient-to-r from-emerald-500 to-sky-500 text-white"
+                  : "text-emerald-600 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-sky-50 hover:text-emerald-700"
+              }`}
+            >
+              ✦ Versions A/B
+            </Link>
+
             <Link
               href="tel:0782687954"
               className="ml-4 rounded-lg bg-gradient-to-r from-emerald-500 to-sky-500 px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:scale-105 hover:from-emerald-600 hover:to-sky-600 hover:shadow-lg lg:px-6 lg:py-2.5 lg:text-base"
@@ -156,6 +170,16 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
+
+            {/* Versions A/B link — mobile */}
+            <Link
+              href="/versions"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block rounded-lg px-4 py-3 text-base font-medium text-emerald-600 transition-all duration-200 hover:bg-emerald-50 hover:text-emerald-700"
+            >
+              ✦ Versions A/B
+            </Link>
+
             <Link
               href="tel:0782687954"
               className="mx-4 mt-4 block rounded-lg bg-gradient-to-r from-emerald-500 to-sky-500 px-4 py-3 text-center font-medium text-white transition-all duration-300 hover:from-emerald-600 hover:to-sky-600 hover:shadow-lg"
