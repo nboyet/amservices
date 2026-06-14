@@ -15,7 +15,6 @@ const navItems = [
 export default function Navigation() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const isVersionsPage = pathname === "/versions";
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,7 +33,6 @@ export default function Navigation() {
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
-    // On sub-pages, let the <Link href="/#section"> do a full navigation
     if (!isHomePage) {
       setIsMobileMenuOpen(false);
       return;
@@ -58,8 +56,6 @@ export default function Navigation() {
     setIsMobileMenuOpen(false);
   };
 
-  // On the homepage, keep hash-only hrefs for smooth scroll.
-  // On other pages, prepend "/" so Next.js navigates back to homepage + hash.
   const getNavHref = (hash: string) => (isHomePage ? hash : `/${hash}`);
   const logoHref = isHomePage ? "#accueil" : "/#accueil";
 
@@ -71,11 +67,13 @@ export default function Navigation() {
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-32 items-center justify-between md:justify-center">
-          {/* Logo */}
           <Link
             href={logoHref}
             onClick={(e) =>
-              scrollToSection(e as React.MouseEvent<HTMLAnchorElement>, "#accueil")
+              scrollToSection(
+                e as React.MouseEvent<HTMLAnchorElement>,
+                "#accueil",
+              )
             }
             className="group mr-4 flex items-center"
           >
@@ -89,7 +87,6 @@ export default function Navigation() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden items-center space-x-1 md:flex lg:space-x-2">
             {navItems.map((item) => (
               <Link
@@ -105,19 +102,6 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-
-            {/* Versions A/B link — remove once a version is chosen */}
-            <Link
-              href="/versions"
-              className={`rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 lg:px-4 lg:text-base ${
-                isVersionsPage
-                  ? "bg-gradient-to-r from-emerald-500 to-sky-500 text-white"
-                  : "text-emerald-600 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-sky-50 hover:text-emerald-700"
-              }`}
-            >
-              ✦ Versions A/B
-            </Link>
-
             <Link
               href="tel:0782687954"
               className="ml-4 rounded-lg bg-gradient-to-r from-emerald-500 to-sky-500 px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:scale-105 hover:from-emerald-600 hover:to-sky-600 hover:shadow-lg lg:px-6 lg:py-2.5 lg:text-base"
@@ -126,7 +110,6 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="rounded-lg p-2 transition-colors hover:bg-gray-100 md:hidden"
@@ -153,7 +136,6 @@ export default function Navigation() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         <div
           className={`overflow-hidden bg-white transition-all duration-300 ease-in-out md:hidden ${
             isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
@@ -170,16 +152,6 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-
-            {/* Versions A/B link — mobile */}
-            <Link
-              href="/versions"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block rounded-lg px-4 py-3 text-base font-medium text-emerald-600 transition-all duration-200 hover:bg-emerald-50 hover:text-emerald-700"
-            >
-              ✦ Versions A/B
-            </Link>
-
             <Link
               href="tel:0782687954"
               className="mx-4 mt-4 block rounded-lg bg-gradient-to-r from-emerald-500 to-sky-500 px-4 py-3 text-center font-medium text-white transition-all duration-300 hover:from-emerald-600 hover:to-sky-600 hover:shadow-lg"
