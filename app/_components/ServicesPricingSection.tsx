@@ -1,5 +1,6 @@
 import type { FC } from "react";
-import type { TarifItem, TravelFees } from "../_types";
+import type { TarifItem, TravelFees, CancellationPolicy } from "../_types";
+import CancellationNotice from "./CancellationNotice";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -10,22 +11,22 @@ interface PricingCard {
   icon: string;
   title: string;
   price: string;
-  unit?: string; // e.g. "/ heure"
+  unit?: string;
   features: string[];
   taxCredit?: boolean;
-  badge?: string; // optional top badge label ("Particuliers" | "Professionnels")
-  highlight?: boolean; // draws the emerald ring
+  badge?: string;
+  highlight?: boolean;
 }
 
 interface ServicesPricingSectionProps {
   tarifs: TarifItem[];
   travelFees: TravelFees;
   paymentMethods: string[];
+  cancellationPolicy: CancellationPolicy;
 }
 
 // ---------------------------------------------------------------------------
 // Static card definitions
-// Keep all editorial content here so content.ts isn't touched.
 // ---------------------------------------------------------------------------
 
 const PRICING_CARDS: PricingCard[] = [
@@ -41,35 +42,8 @@ const PRICING_CARDS: PricingCard[] = [
     features: [
       "Entretien des sols, cuisine, salle de bain",
       "Chambre, vitres, mobilier",
-      "Aspirateur filaire inclus",
-      "Produits d'entretien inclus",
-    ],
-  },
-  {
-    id: "actes-quotidiens",
-    icon: "🤝",
-    title: "Actes du quotidien",
-    price: "20",
-    unit: "€ / heure",
-    features: [
-      "Toilette partielle",
-      "Habillage",
-      "Aide aux déplacements",
-      "Adapté au niveau d'autonomie",
-    ],
-  },
-  {
-    id: "menage-pro",
-    icon: "💼",
-    title: "Ménage professionnel",
-    price: "25",
-    unit: "€ / heure",
-    badge: "Professionnels",
-    features: [
-      "Fin de location",
-      "Fin de chantier",
-      "Entretien de bureaux et commerces",
-      "Locaux professionnels",
+      "Aspirateur filaire fourni",
+      "Produits d'entretien fournis",
     ],
   },
   {
@@ -94,6 +68,32 @@ const PRICING_CARDS: PricingCard[] = [
       "Préparation des repas",
       "Aide à la prise des repas",
       "Respect des habitudes alimentaires",
+    ],
+  },
+  {
+    id: "actes-quotidiens",
+    icon: "🤝",
+    title: "Actes du quotidien",
+    price: "20",
+    unit: "€ / heure",
+    features: [
+      "Toilette partielle",
+      "Habillage",
+      "Aide aux déplacements",
+      "Adapté au niveau d'autonomie",
+    ],
+  },
+  {
+    id: "menage-pro",
+    icon: "💼",
+    title: "Ménage professionnel",
+    price: "25",
+    unit: "€ / heure",
+    badge: "Professionnels",
+    features: [
+      "Fin de location / fin de chantier",
+      "Entretien de bureaux et commerces",
+      "Locaux professionnels",
     ],
   },
 ];
@@ -153,10 +153,11 @@ function PricingCardComponent({ card }: { card: PricingCard }) {
   return (
     <article
       className={`relative flex flex-col rounded-2xl bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md ${
-        card.highlight ? "ring-2 ring-emerald-400" : "ring-1 ring-gray-200/80"
+        card.highlight
+          ? "ring-2 ring-emerald-400"
+          : "ring-1 ring-gray-200/80"
       }`}
     >
-      {/* Top badge */}
       {card.badge && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
           <span
@@ -171,7 +172,6 @@ function PricingCardComponent({ card }: { card: PricingCard }) {
         </div>
       )}
 
-      {/* Icon + title */}
       <div className="mb-4 flex items-center gap-3">
         <span
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-mint/60 to-sky/40 text-2xl"
@@ -182,7 +182,6 @@ function PricingCardComponent({ card }: { card: PricingCard }) {
         <h3 className="text-base font-semibold text-gray-900">{card.title}</h3>
       </div>
 
-      {/* Price */}
       <div className="mb-5">
         <div className="flex items-baseline gap-1">
           <span className="text-4xl font-bold tracking-tight text-gray-900">
@@ -194,23 +193,13 @@ function PricingCardComponent({ card }: { card: PricingCard }) {
         </div>
         {card.taxCredit && (
           <p className="mt-1 text-xs text-emerald-600">
-            Soit{" "}
-            <strong>
-              {(Number(card.price) / 2)
-                .toPrecision(3)
-                .toString()
-                .replace(".", ",")}{" "}
-              €/h{" "}
-            </strong>{" "}
-            après crédit d&apos;impôt
+            Soit <strong>7,50 €/h</strong> après crédit d&apos;impôt
           </p>
         )}
       </div>
 
-      {/* Divider */}
       <div className="mb-4 h-px bg-gray-100" />
 
-      {/* Features */}
       <ul className="flex flex-col gap-2.5">
         {card.features.map((f) => (
           <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
@@ -219,6 +208,12 @@ function PricingCardComponent({ card }: { card: PricingCard }) {
           </li>
         ))}
       </ul>
+
+      {card.taxCredit && (
+        <div className="mt-5">
+          <TaxBadge />
+        </div>
+      )}
     </article>
   );
 }
@@ -230,25 +225,32 @@ function PricingCardComponent({ card }: { card: PricingCard }) {
 const ServicesPricingSection: FC<ServicesPricingSectionProps> = ({
   travelFees,
   paymentMethods,
+  cancellationPolicy,
 }) => {
   return (
     <section className="px-4 py-16 sm:px-6 sm:py-20">
       <div className="mx-auto max-w-6xl">
         {/* Section header */}
         <div className="mb-4 text-center">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-600">
+            Tarifs transparents
+          </p>
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Prestations
+            Nos prestations
           </h2>
+          <p className="mx-auto mt-3 max-w-xl text-base text-gray-500">
+            Un tarif clair pour chaque service. Pas de frais cachés.
+          </p>
         </div>
 
-        {/* Tax credit highlight banner */}
+        {/* Tax credit banner */}
         <div className="mx-auto mb-10 mt-8 flex max-w-2xl items-center gap-4 rounded-2xl bg-gradient-to-r from-emerald-50 to-sky-50 px-6 py-4 ring-1 ring-emerald-200/60">
-          <span className="text-2xl" aria-hidden="true">
-            💰
-          </span>
+          <span className="text-2xl" aria-hidden="true">💰</span>
           <p className="text-sm text-gray-700">
             <strong className="text-gray-900">Crédit d&apos;impôt 50 %</strong>{" "}
-            — L&apos;aide ménagère est éligible.
+            — L&apos;aide ménagère à domicile est éligible. Une heure facturée
+            15&nbsp;€ ne vous coûte réellement que{" "}
+            <strong className="text-emerald-700">7,50 €</strong>.
           </p>
         </div>
 
@@ -287,47 +289,42 @@ const ServicesPricingSection: FC<ServicesPricingSectionProps> = ({
           </div>
         </div>
 
-        <div className="mt-12">
-          <h3 className="mb-5 text-center text-lg font-semibold text-gray-900">
-            Frais annexes et moyens de paiement
-          </h3>
-          {/* Info row: travel fees + payment */}
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {/* Travel fees */}
-            <div className="rounded-xl bg-white px-6 py-5 ring-1 ring-gray-200/80">
-              <p className="mb-3 font-semibold text-gray-900">
-                📍 Déplacements
-              </p>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-center gap-2">
-                  <CheckIcon />
-                  <span>
-                    <strong>Gratuit</strong> jusqu&apos;à{" "}
-                    {travelFees.freeRadius}
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckIcon />
-                  <span>
-                    Au-delà : <strong>{travelFees.feePerKm} / km</strong>
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Payment */}
-            <div className="rounded-xl bg-white px-6 py-5 ring-1 ring-gray-200/80">
-              <p className="mb-3 font-semibold text-gray-900">💳 Paiement</p>
-              <ul className="space-y-2 text-sm text-gray-600">
-                {paymentMethods.map((m) => (
-                  <li key={m} className="flex items-center gap-2">
-                    <CheckIcon />
-                    {m}
-                  </li>
-                ))}
-              </ul>
-            </div>
+        {/* Travel fees + payment */}
+        <div className="mt-8 grid gap-5 sm:grid-cols-2">
+          <div className="rounded-xl bg-white px-6 py-5 ring-1 ring-gray-200/80">
+            <p className="mb-3 font-semibold text-gray-900">📍 Déplacements</p>
+            <ul className="space-y-2 text-sm text-gray-600">
+              <li className="flex items-center gap-2">
+                <CheckIcon />
+                <span>
+                  <strong>Gratuit</strong> jusqu&apos;à {travelFees.freeRadius}
+                </span>
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckIcon />
+                <span>
+                  Au-delà : <strong>{travelFees.feePerKm} / km</strong>
+                </span>
+              </li>
+            </ul>
           </div>
+
+          <div className="rounded-xl bg-white px-6 py-5 ring-1 ring-gray-200/80">
+            <p className="mb-3 font-semibold text-gray-900">💳 Paiement</p>
+            <ul className="space-y-2 text-sm text-gray-600">
+              {paymentMethods.map((m) => (
+                <li key={m} className="flex items-center gap-2">
+                  <CheckIcon />
+                  {m}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Cancellation policy banner */}
+        <div className="mt-8">
+          <CancellationNotice policy={cancellationPolicy} variant="banner" />
         </div>
       </div>
     </section>

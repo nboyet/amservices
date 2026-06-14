@@ -1,10 +1,13 @@
 import type { FC } from "react";
+import type { CancellationPolicy } from "../_types";
+import CancellationNotice from "./CancellationNotice";
 
 interface ContactSectionProps {
   phone: string;
   email: string;
   availability: string;
   invitationText: string;
+  cancellationPolicy: CancellationPolicy;
 }
 
 const ContactSection: FC<ContactSectionProps> = ({
@@ -12,6 +15,7 @@ const ContactSection: FC<ContactSectionProps> = ({
   email,
   availability,
   invitationText,
+  cancellationPolicy,
 }) => {
   return (
     <section id="contact" className="px-4 py-12 sm:px-6 sm:py-16">
@@ -40,6 +44,11 @@ const ContactSection: FC<ContactSectionProps> = ({
         </div>
 
         <p className="mt-6 text-sm text-gray-500">{availability}</p>
+
+        {/* Cancellation notice — inline variant, contextually placed after contact buttons */}
+        <div className="mt-6">
+          <CancellationNotice policy={cancellationPolicy} variant="inline" />
+        </div>
       </div>
     </section>
   );

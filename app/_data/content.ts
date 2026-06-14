@@ -46,31 +46,31 @@ export const CONTENT: SiteContent = {
   audienceProfiles: [
     {
       id: "all",
-      title: "Tous publics", // TODO: personalise
+      title: "Tous publics",
       description:
         "Un accompagnement personnalisé pour répondre aux besoins du quotidien.",
     },
     {
       id: "personnes-agees",
-      title: "Personnes âgées", // TODO: personalise
+      title: "Personnes âgées",
       description:
         "Un accompagnement bienveillant pour maintenir l'autonomie et le confort à domicile au quotidien.",
     },
     {
       id: "perte-autonomie",
-      title: "Personnes en perte d'autonomie", // TODO: personalise
+      title: "Personnes en perte d'autonomie",
       description:
         "Une aide adaptée pour les gestes du quotidien, dans le respect du rythme et des habitudes de chacun.",
     },
     {
       id: "handicap",
-      title: "Personnes en situation de handicap", // TODO: personalise
+      title: "Personnes en situation de handicap",
       description:
         "Un soutien sur mesure pour faciliter la vie à domicile et favoriser l'inclusion au quotidien.",
     },
     {
       id: "familles",
-      title: "Familles ayant besoin d'un relais", // TODO: personalise
+      title: "Familles ayant besoin d'un relais",
       description:
         "Un appui fiable pour les proches aidants qui souhaitent souffler tout en assurant un suivi de qualité.",
     },
@@ -83,12 +83,12 @@ export const CONTENT: SiteContent = {
   ],
 
   zoneSurroundingNote:
-    "Les interventions peuvent également se dérouler dans les communes voisines. N'hésitez pas à me contacter pour vérifier votre secteur.", // TODO: personalise
+    "Les interventions peuvent également se dérouler dans les communes voisines. N'hésitez pas à me contacter pour vérifier votre secteur.",
 
   provider: {
-    name: "Amandine Macé", // TODO: personalise
-    role: "aide à domicile", // TODO: personalise
-    photoSrc: "/amandine.jpg", // TODO: personalise — set to a path like "/photo-prestataire.jpg" once available
+    name: "Amandine Macé",
+    role: "aide à domicile",
+    photoSrc: "/amandine.jpg",
     photoWidth: 400,
     photoHeight: 400,
     experienceText:
@@ -148,10 +148,16 @@ export const CONTENT: SiteContent = {
     },
   ],
 
-  contactAvailability: "Disponible du lundi au vendredi, de 8 h à 18 h.", // TODO: personalise
+  contactAvailability: "Disponible du lundi au vendredi, de 8 h à 18 h.",
 
   contactInvitation:
-    "Appelez-moi ou envoyez-moi un e-mail pour échanger sur vos besoins. Je vous répondrai dans les plus brefs délais.", // TODO: personalise
+    "Appelez-moi ou envoyez-moi un e-mail pour échanger sur vos besoins. Je vous répondrai dans les plus brefs délais.",
+
+  cancellationPolicy: {
+    noticePeriod: "24 heures",
+    consequence: "facturation possible de la prestation",
+    note: "Toute annulation doit être signalée au moins 24 heures avant le rendez-vous. Passé ce délai, la prestation pourra être facturée.",
+  },
 
   tarifs: [
     {
@@ -217,7 +223,7 @@ export const CONTENT: SiteContent = {
   ],
 
   footer: {
-    name: "AM Services — Aide à domicile", // TODO: personalise // TODO: personalise — max 10 items
+    name: "AM Services — Aide à domicile",
     phone: "07 82 68 79 54",
     email: "amandine.mace2@gmail.com",
     legalUrl: "/mentions-legales",

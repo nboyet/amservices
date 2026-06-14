@@ -49,6 +49,12 @@ export interface TravelFees {
   feePerKm: string; // e.g. "0,25€"
 }
 
+export interface CancellationPolicy {
+  noticePeriod: string;   // e.g. "24 heures"
+  consequence: string;    // short description of what may happen
+  note: string;           // full sentence shown in UI
+}
+
 export interface SiteContent {
   phone: string;
   email: string;
@@ -63,5 +69,6 @@ export interface SiteContent {
   paymentMethods: string[];
   contactAvailability: string;
   contactInvitation: string;
+  cancellationPolicy: CancellationPolicy;
   footer: FooterData;
 }
