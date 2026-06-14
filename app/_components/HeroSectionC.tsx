@@ -12,7 +12,7 @@ const HeroSectionC: FC<HeroSectionCProps> = ({ phone, zone }) => {
       {/* Full-width hero image */}
       <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[580px] overflow-hidden">
         <Image
-          src="/hero-care.jpg"
+          src="/hero-care.png"
           alt="Amandine, aide à domicile bienveillante, accompagne une personne âgée à son domicile"
           fill
           priority
@@ -38,9 +38,7 @@ const HeroSectionC: FC<HeroSectionCProps> = ({ phone, zone }) => {
               <h2 className="mt-2 text-xl font-medium text-white/90 sm:text-2xl">
                 Aide à domicile
               </h2>
-              <p className="mt-3 text-base text-white/80 sm:text-lg">
-                {zone}
-              </p>
+              <p className="mt-3 text-base text-white/80 sm:text-lg">{zone}</p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <a

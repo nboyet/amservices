@@ -12,23 +12,23 @@ interface ServicesSectionCProps {
 // Static images per service — mapped by service id
 const SERVICE_IMAGES: Record<string, { src: string; alt: string }> = {
   menage: {
-    src: "/service-menage.jpg",
+    src: "/service-menage.png",
     alt: "Aide ménagère : entretien et nettoyage du domicile",
   },
   courses: {
-    src: "/service-courses.jpg",
+    src: "/service-courses.png",
     alt: "Aide aux courses : accompagnement au supermarché",
   },
   repas: {
-    src: "/service-repas.jpg",
+    src: "/service-repas.png",
     alt: "Aide aux repas : préparation et prise des repas",
   },
   quotidien: {
-    src: "/service-quotidien.jpg",
+    src: "/service-quotidien.png",
     alt: "Actes de la vie quotidienne : accompagnement personnalisé",
   },
   menagePro: {
-    src: "/service-menage-pro.jpg",
+    src: "/service-menage-pro.png",
     alt: "Ménage professionnel : bureaux et locaux",
   },
 };
@@ -110,7 +110,7 @@ const ServicesSectionC: FC<ServicesSectionCProps> = ({
                 (service.id === "courses" && t.id === "aide-courses") ||
                 (service.id === "repas" && t.id === "aide-repas") ||
                 (service.id === "quotidien" && t.id === "actes-quotidiens") ||
-                (service.id === "menagePro" && t.id === "menage-pro")
+                (service.id === "menagePro" && t.id === "menage-pro"),
             );
             const isImageRight = index % 2 === 1;
 
@@ -118,9 +118,7 @@ const ServicesSectionC: FC<ServicesSectionCProps> = ({
               <article
                 key={service.id}
                 className={`flex flex-col gap-6 lg:gap-12 ${
-                  isImageRight
-                    ? "lg:flex-row-reverse"
-                    : "lg:flex-row"
+                  isImageRight ? "lg:flex-row-reverse" : "lg:flex-row"
                 } items-center`}
               >
                 {/* Image side */}
@@ -145,7 +143,7 @@ const ServicesSectionC: FC<ServicesSectionCProps> = ({
                 </div>
 
                 {/* Content side */}
-                <div className="flex-1">
+                <div className="flex-1 w-full">
                   <div className="mb-3 flex items-center gap-3">
                     <span
                       className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-2xl"
@@ -177,7 +175,7 @@ const ServicesSectionC: FC<ServicesSectionCProps> = ({
 
                   <a
                     href="#contact"
-                    className="inline-flex min-h-[44px] items-center justify-center rounded-full border-2 border-emerald-500 px-6 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
+                    className="inline-flex min-h-[44px] items-center justify-center rounded-full border-2 border-emerald-500 px-8 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
                   >
                     En savoir plus
                   </a>
@@ -194,8 +192,20 @@ const ServicesSectionC: FC<ServicesSectionCProps> = ({
           </h3>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { id: "forfait-2h", label: "Forfait 2 h / semaine", price: "28 €", saving: "→ économisez 2 €", taxCredit: true },
-              { id: "forfait-4h", label: "Forfait 4 h / semaine", price: "55 €", saving: "→ économisez 5 €", taxCredit: true },
+              {
+                id: "forfait-2h",
+                label: "Forfait 2 h / semaine",
+                price: "28 €",
+                saving: "→ économisez 2 €",
+                taxCredit: true,
+              },
+              {
+                id: "forfait-4h",
+                label: "Forfait 4 h / semaine",
+                price: "55 €",
+                saving: "→ économisez 5 €",
+                taxCredit: true,
+              },
             ].map((f) => (
               <div
                 key={f.id}
@@ -221,9 +231,7 @@ const ServicesSectionC: FC<ServicesSectionCProps> = ({
         {/* Travel + payment */}
         <div className="mt-12 grid gap-5 sm:grid-cols-2">
           <div className="rounded-2xl bg-white px-6 py-5 shadow-sm ring-1 ring-gray-200/80">
-            <p className="mb-3 font-semibold text-gray-900">
-              📍 Déplacements
-            </p>
+            <p className="mb-3 font-semibold text-gray-900">📍 Déplacements</p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-center gap-2">
                 <CheckIcon />
