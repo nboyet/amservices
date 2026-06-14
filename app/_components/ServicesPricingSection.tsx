@@ -41,32 +41,8 @@ const PRICING_CARDS: PricingCard[] = [
     features: [
       "Entretien des sols, cuisine, salle de bain",
       "Chambre, vitres, mobilier",
-      "Aspirateur filaire fourni",
-      "Produits d'entretien fournis",
-    ],
-  },
-  {
-    id: "aide-courses",
-    icon: "🛒",
-    title: "Aide aux courses",
-    price: "12",
-    unit: "€ / heure",
-    features: [
-      "Accompagnement au magasin",
-      "Courses selon vos besoins",
-      "Rangement des achats à domicile",
-    ],
-  },
-  {
-    id: "aide-repas",
-    icon: "🍽️",
-    title: "Aide aux repas",
-    price: "12",
-    unit: "€ / heure",
-    features: [
-      "Préparation des repas",
-      "Aide à la prise des repas",
-      "Respect des habitudes alimentaires",
+      "Aspirateur filaire inclus",
+      "Produits d'entretien inclus",
     ],
   },
   {
@@ -94,6 +70,30 @@ const PRICING_CARDS: PricingCard[] = [
       "Fin de chantier",
       "Entretien de bureaux et commerces",
       "Locaux professionnels",
+    ],
+  },
+  {
+    id: "aide-courses",
+    icon: "🛒",
+    title: "Aide aux courses",
+    price: "12",
+    unit: "€ / heure",
+    features: [
+      "Accompagnement au magasin",
+      "Courses selon vos besoins",
+      "Rangement des achats à domicile",
+    ],
+  },
+  {
+    id: "aide-repas",
+    icon: "🍽️",
+    title: "Aide aux repas",
+    price: "12",
+    unit: "€ / heure",
+    features: [
+      "Préparation des repas",
+      "Aide à la prise des repas",
+      "Respect des habitudes alimentaires",
     ],
   },
 ];
@@ -194,7 +194,15 @@ function PricingCardComponent({ card }: { card: PricingCard }) {
         </div>
         {card.taxCredit && (
           <p className="mt-1 text-xs text-emerald-600">
-            Soit <strong>7€50/h </strong> après crédit d&apos;impôt
+            Soit{" "}
+            <strong>
+              {(Number(card.price) / 2)
+                .toPrecision(3)
+                .toString()
+                .replace(".", ",")}{" "}
+              €/h{" "}
+            </strong>{" "}
+            après crédit d&apos;impôt
           </p>
         )}
       </div>
@@ -211,13 +219,6 @@ function PricingCardComponent({ card }: { card: PricingCard }) {
           </li>
         ))}
       </ul>
-
-      {/* Tax badge at bottom */}
-      {card.taxCredit && (
-        <div className="mt-5">
-          <TaxBadge />
-        </div>
-      )}
     </article>
   );
 }
@@ -235,15 +236,9 @@ const ServicesPricingSection: FC<ServicesPricingSectionProps> = ({
       <div className="mx-auto max-w-6xl">
         {/* Section header */}
         <div className="mb-4 text-center">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-600">
-            Tarifs transparents
-          </p>
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Nos prestations
+            Prestations
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-base text-gray-500">
-            Un tarif clair pour chaque service. Pas de frais cachés.
-          </p>
         </div>
 
         {/* Tax credit highlight banner */}
@@ -253,9 +248,7 @@ const ServicesPricingSection: FC<ServicesPricingSectionProps> = ({
           </span>
           <p className="text-sm text-gray-700">
             <strong className="text-gray-900">Crédit d&apos;impôt 50 %</strong>{" "}
-            — L&apos;aide ménagère à domicile est éligible. Une heure facturée
-            15&nbsp;€ ne vous coûte réellement que{" "}
-            <strong className="text-emerald-700">7,50 €</strong>.
+            — L&apos;aide ménagère est éligible.
           </p>
         </div>
 
@@ -324,7 +317,7 @@ const ServicesPricingSection: FC<ServicesPricingSectionProps> = ({
 
             {/* Payment */}
             <div className="rounded-xl bg-white px-6 py-5 ring-1 ring-gray-200/80">
-              *<p className="mb-3 font-semibold text-gray-900">💳 Paiement</p>
+              <p className="mb-3 font-semibold text-gray-900">💳 Paiement</p>
               <ul className="space-y-2 text-sm text-gray-600">
                 {paymentMethods.map((m) => (
                   <li key={m} className="flex items-center gap-2">
