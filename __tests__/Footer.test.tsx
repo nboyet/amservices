@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import Footer from "../app/_components/Footer";
 
 const footerData = {
-  name: "Prénom Nom — Aide à domicile",
+  name: "Prénom Nom — Aide à la personne",
   zones: ["Ville", "Commune A", "Commune B"],
   phone: "06 00 00 00 00",
   email: "contact@exemple.fr",

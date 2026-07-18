@@ -20,7 +20,7 @@ export interface TrustPoint {
 
 export interface ProviderProfile {
   name: string;
-  role: string; // e.g. "aide à domicile"
+  role: string; // e.g. "aide à la personne"
   photoSrc: string | null; // null triggers avatar fallback
   photoWidth: number;
   photoHeight: number;

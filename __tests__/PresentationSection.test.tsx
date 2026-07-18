@@ -5,7 +5,7 @@ import type { ProviderProfile } from "../app/_types";
 
 const defaultProvider: ProviderProfile = {
   name: "Prénom Nom",
-  role: "aide à domicile",
+  role: "aide à la personne",
   photoSrc: null,
   photoWidth: 400,
   photoHeight: 400,

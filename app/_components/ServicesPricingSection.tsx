@@ -1,5 +1,6 @@
 import type { FC } from "react";
-import type { TarifItem, TravelFees } from "../_types";
+import Image from "next/image";
+import type { ServiceItem, TarifItem, TravelFees } from "../_types";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -15,17 +16,45 @@ interface PricingCard {
   taxCredit?: boolean;
   badge?: string; // optional top badge label ("Particuliers" | "Professionnels")
   highlight?: boolean; // draws the emerald ring
+  image?: { src: string; alt: string }; // from C
 }
 
 interface ServicesPricingSectionProps {
+  services: ServiceItem[];
   tarifs: TarifItem[];
   travelFees: TravelFees;
   paymentMethods: string[];
 }
 
 // ---------------------------------------------------------------------------
+// Static images (from C)
+// ---------------------------------------------------------------------------
+
+const SERVICE_IMAGES: Record<string, { src: string; alt: string }> = {
+  menage: {
+    src: "/service-menage.png",
+    alt: "Aide ménagère : entretien et nettoyage du domicile",
+  },
+  courses: {
+    src: "/service-courses.png",
+    alt: "Aide aux courses : accompagnement au supermarché",
+  },
+  repas: {
+    src: "/service-repas.png",
+    alt: "Aide aux repas : préparation et prise des repas",
+  },
+  quotidien: {
+    src: "/service-quotidien.png",
+    alt: "Actes de la vie quotidienne : accompagnement personnalisé",
+  },
+  menagePro: {
+    src: "/service-menage-pro.png",
+    alt: "Ménage professionnel : bureaux et locaux",
+  },
+};
+
+// ---------------------------------------------------------------------------
 // Static card definitions
-// Keep all editorial content here so content.ts isn't touched.
 // ---------------------------------------------------------------------------
 
 const PRICING_CARDS: PricingCard[] = [
@@ -44,6 +73,7 @@ const PRICING_CARDS: PricingCard[] = [
       "Aspirateur filaire inclus",
       "Produits d'entretien inclus",
     ],
+    image: SERVICE_IMAGES.menage,
   },
   {
     id: "menage-pro",
@@ -58,6 +88,7 @@ const PRICING_CARDS: PricingCard[] = [
       "Entretien de bureaux et commerces",
       "Locaux professionnels",
     ],
+    image: SERVICE_IMAGES.menagePro,
   },
   {
     id: "actes-quotidiens",
@@ -71,6 +102,7 @@ const PRICING_CARDS: PricingCard[] = [
       "Aide aux déplacements",
       "Adapté au niveau d'autonomie",
     ],
+    image: SERVICE_IMAGES.quotidien,
   },
 
   {
@@ -84,6 +116,7 @@ const PRICING_CARDS: PricingCard[] = [
       "Courses selon vos besoins",
       "Rangement des achats à domicile",
     ],
+    image: SERVICE_IMAGES.courses,
   },
   {
     id: "aide-repas",
@@ -96,6 +129,7 @@ const PRICING_CARDS: PricingCard[] = [
       "Aide à la prise des repas",
       "Respect des habitudes alimentaires",
     ],
+    image: SERVICE_IMAGES.repas,
   },
 ];
 
@@ -153,13 +187,13 @@ function TaxBadge() {
 function PricingCardComponent({ card }: { card: PricingCard }) {
   return (
     <article
-      className={`relative flex flex-col rounded-2xl bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md ${
+      className={`relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-shadow duration-200 hover:shadow-md ${
         card.highlight ? "ring-2 ring-emerald-400" : "ring-1 ring-gray-200/80"
       }`}
     >
       {/* Top badge */}
       {card.badge && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+        <div className="absolute left-1/2 top-3 z-10 -translate-x-1/2">
           <span
             className={`whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold shadow-sm ${
               card.highlight
@@ -172,54 +206,83 @@ function PricingCardComponent({ card }: { card: PricingCard }) {
         </div>
       )}
 
-      {/* Icon + title */}
-      <div className="mb-4 flex items-center gap-3">
-        <span
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-mint/60 to-sky/40 text-2xl"
-          aria-hidden="true"
-        >
-          {card.icon}
-        </span>
-        <h3 className="text-base font-semibold text-gray-900">{card.title}</h3>
-      </div>
+      {/* Image (from C) */}
+      {card.image && (
+        <div className="relative h-44 w-full overflow-hidden">
+          <Image
+            src={card.image.src}
+            alt={card.image.alt}
+            width={400}
+            height={220}
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      )}
 
-      {/* Price */}
-      <div className="mb-5">
-        <div className="flex items-baseline gap-1">
-          <span className="text-4xl font-bold tracking-tight text-gray-900">
-            {card.price}
+      <div className="flex flex-1 flex-col p-6">
+        {/* Icon + title */}
+        <div className="mb-4 flex items-center gap-3">
+          <span
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-mint/60 to-sky/40 text-2xl"
+            aria-hidden="true"
+          >
+            {card.icon}
           </span>
-          {card.unit && (
-            <span className="text-sm text-gray-500">{card.unit}</span>
+          <h3 className="text-base font-semibold text-gray-900">
+            {card.title}
+          </h3>
+        </div>
+
+        {/* Price */}
+        <div className="mb-5">
+          <div className="flex items-baseline gap-1">
+            <span className="text-4xl font-bold tracking-tight text-gray-900">
+              {card.price}
+            </span>
+            {card.unit && (
+              <span className="text-sm text-gray-500">{card.unit}</span>
+            )}
+          </div>
+          {card.taxCredit && (
+            <p className="mt-1 text-xs text-emerald-600">
+              Soit{" "}
+              <strong>
+                {(Number(card.price) / 2)
+                  .toPrecision(3)
+                  .toString()
+                  .replace(".", ",")}{" "}
+                € / heure{" "}
+              </strong>{" "}
+              après crédit d&apos;impôt
+            </p>
           )}
         </div>
-        {card.taxCredit && (
-          <p className="mt-1 text-xs text-emerald-600">
-            Soit{" "}
-            <strong>
-              {(Number(card.price) / 2)
-                .toPrecision(3)
-                .toString()
-                .replace(".", ",")}{" "}
-              € / heure{" "}
-            </strong>{" "}
-            après crédit d&apos;impôt
-          </p>
-        )}
+
+        {/* Divider */}
+        <div className="mb-4 h-px bg-gray-100" />
+
+        {/* Features */}
+        <ul className="mb-5 flex flex-1 flex-col gap-2.5">
+          {card.features.map((f) => (
+            <li
+              key={f}
+              className="flex items-start gap-2 text-sm text-gray-600"
+            >
+              <CheckIcon />
+              {f}
+            </li>
+          ))}
+        </ul>
+
+        {/* CTA button (from C) */}
+        <a
+          href="#contact"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-full border-2 border-emerald-500 px-6 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
+        >
+          En savoir plus
+        </a>
       </div>
-
-      {/* Divider */}
-      <div className="mb-4 h-px bg-gray-100" />
-
-      {/* Features */}
-      <ul className="flex flex-col gap-2.5">
-        {card.features.map((f) => (
-          <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
-            <CheckIcon />
-            {f}
-          </li>
-        ))}
-      </ul>
     </article>
   );
 }
@@ -258,34 +321,6 @@ const ServicesPricingSection: FC<ServicesPricingSectionProps> = ({
           {PRICING_CARDS.map((card) => (
             <PricingCardComponent key={card.id} card={card} />
           ))}
-        </div>
-
-        {/* Weekly packages */}
-        <div className="mt-12">
-          <h3 className="mb-5 text-center text-lg font-semibold text-gray-900">
-            Forfaits hebdomadaires — Aide ménagère
-          </h3>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {FORFAITS.map((f) => (
-              <div
-                key={f.id}
-                className="flex items-center justify-between rounded-xl bg-white px-6 py-4 ring-1 ring-gray-200/80"
-              >
-                <div>
-                  <p className="font-semibold text-gray-900">{f.label}</p>
-                  <p className="mt-0.5 text-xs text-gray-500">{f.saving}</p>
-                  {f.taxCredit && (
-                    <div className="mt-2">
-                      <TaxBadge />
-                    </div>
-                  )}
-                </div>
-                <span className="text-2xl font-bold text-gray-900">
-                  {f.price}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="mt-12">

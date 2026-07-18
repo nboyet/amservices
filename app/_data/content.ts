@@ -87,7 +87,7 @@ export const CONTENT: SiteContent = {
 
   provider: {
     name: "Amandine Macé", // TODO: personalise
-    role: "aide à domicile", // TODO: personalise
+    role: "aide à la personne", // TODO: personalise
     photoSrc: "/amandine.jpg", // TODO: personalise — set to a path like "/photo-prestataire.jpg" once available
     photoWidth: 400,
     photoHeight: 400,
@@ -210,14 +210,10 @@ export const CONTENT: SiteContent = {
     feePerKm: "0,25€",
   },
 
-  paymentMethods: [
-    "CESU (Chèque Emploi Service Universel)",
-    "Virement bancaire",
-    "Espèces",
-  ],
+  paymentMethods: ["CESU préfinancé", "Virement bancaire", "Espèces"],
 
   footer: {
-    name: "AM Services — Aide à domicile", // TODO: personalise // TODO: personalise — max 10 items
+    name: "AM Services — Aide à la personne",
     phone: "07 82 68 79 54",
     email: "amandine.mace2@gmail.com",
     legalUrl: "/mentions-legales",

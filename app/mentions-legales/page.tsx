@@ -24,7 +24,7 @@ const sections: { title: string; content: string[] }[] = [
   {
     title: "Nature du site",
     content: [
-      "Ce site est un site vitrine à vocation exclusivement informative, présentant les services d'aide à domicile et de ménage proposés par AM Services.",
+      "Ce site est un site vitrine à vocation exclusivement informative, présentant les services d'aide à la personne et de ménage proposés par AM Services.",
       "Il ne permet pas la conclusion de contrats en ligne ni le paiement de prestations.",
     ],
   },

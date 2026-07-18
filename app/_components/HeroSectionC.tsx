@@ -8,12 +8,12 @@ interface HeroSectionCProps {
 
 const HeroSectionC: FC<HeroSectionCProps> = ({ phone, zone }) => {
   return (
-    <header className="relative pt-20">
+    <header className="relative pt-32">
       {/* Full-width hero image */}
       <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[580px] overflow-hidden">
         <Image
           src="/hero-care.png"
-          alt="Amandine, aide à domicile bienveillante, accompagne une personne âgée à son domicile"
+          alt="Amandine, aide à la personne bienveillante, accompagne une personne âgée à son domicile"
           fill
           priority
           className="object-cover object-center"
@@ -35,9 +35,6 @@ const HeroSectionC: FC<HeroSectionCProps> = ({ phone, zone }) => {
               <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
                 Amandine Macé
               </h1>
-              <h2 className="mt-2 text-xl font-medium text-white/90 sm:text-2xl">
-                Aide à domicile
-              </h2>
               <p className="mt-3 text-base text-white/80 sm:text-lg">{zone}</p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">

@@ -11,16 +11,35 @@ const Footer: FC<FooterProps> = ({ data }) => {
   return (
     <footer className="bg-gray-900 px-4 py-10 text-gray-200 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex md:flex-row md:justify-between flex-col">
           {/* Provider name + legal link */}
           <div className="flex flex-col gap-3">
-            <Image
-              src="/si_logo.webp"
-              alt="Logo"
-              width={80}
-              height={80}
-              className="h-16 w-16 rounded-lg object-contain sm:h-20 sm:w-20"
-            />
+            <div className="flex flex-row">
+              <Image
+                src="/si_logo.webp"
+                alt="Logo"
+                width={80}
+                height={80}
+                className="h-16 w-16 rounded-lg object-contain sm:h-20 sm:w-20"
+              />
+
+              {/* Contact links */}
+              <div className="flex flex-col justify-center ml-8">
+                <a
+                  href={`tel:${data.phone.replace(/\s/g, "")}`}
+                  className="inline-flex text-sm text-gray-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  📞 {data.phone}
+                </a>
+
+                <a
+                  href={`mailto:${data.email}`}
+                  className="inline-flex text-sm text-gray-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  ✉️ {data.email}
+                </a>
+              </div>
+            </div>
             <p className="text-lg font-semibold text-white">{data.name}</p>
             <Link
               href={data.legalUrl}
@@ -31,20 +50,21 @@ const Footer: FC<FooterProps> = ({ data }) => {
           </div>
 
           {/* Contact links */}
-          <div className="flex flex-row items-start justify-between lg:col-span-2 lg:justify-end lg:gap-12">
-            <a
-              href={`tel:${data.phone.replace(/\s/g, "")}`}
-              className="inline-flex min-h-[44px] min-w-[44px] items-center gap-2 text-sm text-gray-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              📞 {data.phone}
-            </a>
-
-            <a
-              href={`mailto:${data.email}`}
-              className="inline-flex min-h-[44px] min-w-[44px] items-center gap-2 text-sm text-gray-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              ✉️ {data.email}
-            </a>
+          <div className="flex md:flex-col flex-row justify-between">
+            <Image
+              src="/urssaf.png"
+              alt="URSSAF LOGO"
+              width={80}
+              height={80}
+              className="h-16 w-16 rounded-lg object-contain sm:h-20 sm:w-20"
+            />{" "}
+            <Image
+              src="/dgfp.svg"
+              alt="DGFP Logo"
+              width={80}
+              height={80}
+              className="h-16 w-16 rounded-lg object-contain sm:h-20 sm:w-20"
+            />
           </div>
         </div>
       </div>
