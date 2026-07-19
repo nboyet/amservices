@@ -66,7 +66,6 @@ const PRICING_CARDS: PricingCard[] = [
     unit: "€ / heure",
     highlight: true,
     taxCredit: true,
-    badge: "Le plus populaire",
     features: [
       "Entretien des sols, cuisine, salle de bain",
       "Chambre, vitres, mobilier",
@@ -81,7 +80,6 @@ const PRICING_CARDS: PricingCard[] = [
     title: "Ménage professionnel",
     price: "25",
     unit: "€ / heure",
-    badge: "Professionnels",
     features: [
       "Fin de location",
       "Fin de chantier",
