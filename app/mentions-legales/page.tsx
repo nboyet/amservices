@@ -17,7 +17,7 @@ const sections: { title: string; content: string[] }[] = [
       "SIREN : 102692738",
       "SAP : 102692738",
       "Adresse du domicile: *** rue ***, 62840 Laventie",
-      "Adresse de courrier électronique: amandine.mace2@gmail.com",
+      "Adresse de courrier électronique: contact@lesservicesdamandine.fr",
       "Téléphone : 07 82 68 79 54",
     ],
   },
@@ -48,7 +48,7 @@ const sections: { title: string; content: string[] }[] = [
     content: [
       "Les données personnelles collectées via les moyens de contact du site (nom, téléphone, adresse e-mail) sont utilisées uniquement pour répondre aux demandes formulées.",
       "Elles ne font l'objet d'aucune cession ni transmission à des tiers.",
-      "Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de portabilité et de suppression de vos données. Pour exercer ces droits, contactez : amandine.mace2@gmail.com.",
+      "Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de portabilité et de suppression de vos données. Pour exercer ces droits, contactez : contact@lesservicesdamandine.fr.",
     ],
   },
   {

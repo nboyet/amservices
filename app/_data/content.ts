@@ -2,7 +2,7 @@ import type { SiteContent } from "../_types";
 
 export const CONTENT: SiteContent = {
   phone: "07 82 68 79 54",
-  email: "amandine.mace2@gmail.com",
+  email: "contact@lesservicesdamandine.fr",
   zone: "Laventie et communes voisines",
 
   services: [
@@ -215,7 +215,7 @@ export const CONTENT: SiteContent = {
   footer: {
     name: "AM Services — Aide à la personne",
     phone: "07 82 68 79 54",
-    email: "amandine.mace2@gmail.com",
+    email: "contact@lesservicesdamandine.fr",
     legalUrl: "/mentions-legales",
   },
 };
