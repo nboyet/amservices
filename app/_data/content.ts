@@ -86,9 +86,9 @@ export const CONTENT: SiteContent = {
     "Les interventions peuvent également se dérouler dans les communes voisines. N'hésitez pas à me contacter pour vérifier votre secteur.", // TODO: personalise
 
   provider: {
-    name: "Amandine Macé", // TODO: personalise
-    role: "aide à la personne", // TODO: personalise
-    photoSrc: "/amandine.jpg", // TODO: personalise — set to a path like "/photo-prestataire.jpg" once available
+    name: "Amandine Macé",
+    role: "aide à la personne",
+    photoSrc: "/amandine.jpg",
     photoWidth: 400,
     photoHeight: 400,
     experienceText:

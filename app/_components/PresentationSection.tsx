@@ -36,8 +36,7 @@ const PresentationSection: FC<PresentationSectionProps> = ({ provider }) => {
                   height={provider.photoHeight}
                   alt={altText}
                   preload={true}
-                  className="rounded-2xl object-cover shadow-md mx-auto"
-                  style={{ width: "160px", height: "160px" }}
+                  className="rounded-2xl object-cover shadow-md mx-auto md:w-auto md:h-auto w-[160px] h-[160px]"
                 />
               )}
             </div>

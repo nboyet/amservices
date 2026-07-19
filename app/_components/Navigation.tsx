@@ -6,8 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { href: "#services", label: "Services" },
-  { href: "#tarifs", label: "Tarifs" },
+  { href: "#services", label: "Services et tarifs" },
   { href: "#qui-suis-je", label: "Qui suis-je" },
   { href: "#contact", label: "Contact" },
 ];

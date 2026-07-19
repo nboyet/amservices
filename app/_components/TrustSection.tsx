@@ -12,7 +12,7 @@ const TrustSection: FC<TrustSectionProps> = ({ points }) => {
       <div className="mx-auto max-w-4xl">
         <ScrollReveal variant="up">
           <h2 className="mb-8 text-2xl font-bold text-gray-900 sm:text-3xl">
-            Pourquoi me faire confiance\u00a0?
+            Pourquoi me faire confiance ?
           </h2>
         </ScrollReveal>
 
