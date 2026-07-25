@@ -20,8 +20,6 @@ interface PricingCard {
 }
 
 interface ServicesPricingSectionProps {
-  services: ServiceItem[];
-  tarifs: TarifItem[];
   travelFees: TravelFees;
   paymentMethods: string[];
 }
@@ -62,7 +60,7 @@ const PRICING_CARDS: PricingCard[] = [
     id: "aide-menagere",
     icon: "🏠",
     title: "Aide ménagère",
-    price: "15",
+    price: "20",
     unit: "€ / heure",
     highlight: true,
     taxCredit: true,
@@ -92,7 +90,7 @@ const PRICING_CARDS: PricingCard[] = [
     id: "actes-quotidiens",
     icon: "🤝",
     title: "Actes du quotidien",
-    price: "20",
+    price: "28",
     unit: "€ / heure",
     features: [
       "Toilette partielle",
@@ -107,7 +105,7 @@ const PRICING_CARDS: PricingCard[] = [
     id: "aide-courses",
     icon: "🛒",
     title: "Aide aux courses",
-    price: "12",
+    price: "18",
     unit: "€ / heure",
     features: [
       "Accompagnement au magasin",
@@ -120,7 +118,7 @@ const PRICING_CARDS: PricingCard[] = [
     id: "aide-repas",
     icon: "🍽️",
     title: "Aide aux repas",
-    price: "12",
+    price: "18",
     unit: "€ / heure",
     features: [
       "Préparation des repas",
@@ -128,23 +126,6 @@ const PRICING_CARDS: PricingCard[] = [
       "Respect des habitudes alimentaires",
     ],
     image: SERVICE_IMAGES.repas,
-  },
-];
-
-const FORFAITS = [
-  {
-    id: "forfait-2h",
-    label: "Forfait 2 h / semaine",
-    price: "28 €",
-    saving: "→ économisez 2 €",
-    taxCredit: true,
-  },
-  {
-    id: "forfait-4h",
-    label: "Forfait 4 h / semaine",
-    price: "55 €",
-    saving: "→ économisez 5 €",
-    taxCredit: true,
   },
 ];
 
