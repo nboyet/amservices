@@ -15,8 +15,6 @@ export default function Home() {
 
       <section id="services">
         <ServicesPricingSection
-          services={CONTENT.services}
-          tarifs={CONTENT.tarifs}
           travelFees={CONTENT.travelFees}
           paymentMethods={CONTENT.paymentMethods}
         />

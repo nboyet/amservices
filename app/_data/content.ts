@@ -207,7 +207,7 @@ export const CONTENT: SiteContent = {
 
   travelFees: {
     freeRadius: "10km autour de Laventie",
-    feePerKm: "0,25€",
+    feePerKm: "0,30€",
   },
 
   paymentMethods: ["CESU préfinancé", "Virement bancaire", "Espèces"],

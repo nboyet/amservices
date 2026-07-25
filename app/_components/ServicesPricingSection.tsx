@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import Image from "next/image";
-import type { ServiceItem, TarifItem, TravelFees } from "../_types";
+import type { TravelFees } from "../_types";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -155,15 +155,7 @@ function CheckIcon() {
   );
 }
 
-function TaxBadge() {
-  return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 ring-1 ring-emerald-200">
-      💰 Crédit d&apos;impôt 50 %
-    </span>
-  );
-}
-
-function PricingCardComponent({ card }: { card: PricingCard }) {
+function PricingCardComponent({ card }: Readonly<{ card: PricingCard }>) {
   return (
     <article
       className={`relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-shadow duration-200 hover:shadow-md ${
