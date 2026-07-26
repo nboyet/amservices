@@ -210,7 +210,13 @@ export const CONTENT: SiteContent = {
     feePerKm: "0,30€",
   },
 
-  paymentMethods: ["CESU préfinancé", "Virement bancaire", "Espèces"],
+  paymentMethods: [
+    "CESU préfinancé",
+    "Chèque CESU",
+    "Contrat CESU",
+    "Virement bancaire",
+    "Espèces",
+  ],
 
   footer: {
     name: "AM Services — Aide à la personne",
