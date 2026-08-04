@@ -67,8 +67,6 @@ const PRICING_CARDS: PricingCard[] = [
     features: [
       "Entretien des sols, cuisine, salle de bain",
       "Chambre, vitres, mobilier",
-      "Aspirateur filaire inclus",
-      "Produits d'entretien inclus",
     ],
     image: SERVICE_IMAGES.menage,
   },
