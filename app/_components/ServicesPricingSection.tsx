@@ -60,7 +60,7 @@ const PRICING_CARDS: PricingCard[] = [
     id: "aide-menagere",
     icon: "🏠",
     title: "Aide ménagère",
-    price: "20",
+    price: "25",
     unit: "€ / heure",
     highlight: true,
     taxCredit: true,
@@ -88,7 +88,7 @@ const PRICING_CARDS: PricingCard[] = [
     id: "actes-quotidiens",
     icon: "🤝",
     title: "Actes du quotidien",
-    price: "28",
+    price: "30",
     unit: "€ / heure",
     features: [
       "Toilette partielle",
