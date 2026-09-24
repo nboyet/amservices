@@ -157,7 +157,7 @@ export const CONTENT: SiteContent = {
     {
       id: "aide-menagere",
       title: "Aide ménagère",
-      price: "15€/h ",
+      price: "25€/h ",
       description: "Entretien du logement",
       taxCredit: true,
     },
@@ -171,21 +171,21 @@ export const CONTENT: SiteContent = {
     {
       id: "actes-quotidiens",
       title: "Aide actes quotidiens",
-      price: "20€/h",
+      price: "30€/h",
       description: "Toilette partielle, habillage, déplacements",
       taxCredit: false,
     },
     {
       id: "aide-courses",
       title: "Aide aux courses",
-      price: "12€/h",
+      price: "15€/h",
       description: "Accompagnement et réalisation des courses",
       taxCredit: false,
     },
     {
       id: "aide-repas",
       title: "Aide aux repas",
-      price: "12€/h",
+      price: "15€/h",
       description: "Préparation et aide à la prise des repas",
       taxCredit: false,
     },
@@ -216,6 +216,7 @@ export const CONTENT: SiteContent = {
     "Contrat CESU",
     "Virement bancaire",
     "Espèces",
+    "Convention avec les mutuelles pour aide temporaire",
   ],
 
   footer: {
