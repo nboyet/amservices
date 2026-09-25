@@ -11,6 +11,7 @@ interface PricingCard {
   icon: string;
   title: string;
   price: string;
+  pricePrefix?: string;
   unit?: string; // e.g. "/ heure"
   features: string[];
   taxCredit?: boolean;
@@ -75,6 +76,7 @@ const PRICING_CARDS: PricingCard[] = [
     icon: "💼",
     title: "Ménage professionnel",
     price: "25",
+    pricePrefix: "À partir de",
     unit: "€ / heure",
     features: [
       "Fin de location",
@@ -206,6 +208,9 @@ function PricingCardComponent({ card }: Readonly<{ card: PricingCard }>) {
         {/* Price */}
         <div className="mb-5">
           <div className="flex items-baseline gap-1">
+          {card.pricePrefix && (
+            <p className="mb-1 text-sm text-gray-500">{card.pricePrefix}</p>
+          )}
             <span className="text-4xl font-bold tracking-tight text-gray-900">
               {card.price}
             </span>
